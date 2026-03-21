@@ -1,0 +1,8 @@
+*
+!*/
+
+# track the .gitignore file itself
+!.gitignore
+
+# track the resume.tex file
+!resume.tex
