@@ -4,7 +4,7 @@
 \usepackage[colorlinks=true, linkcolor=blue, urlcolor=cyan]{hyperref}
 
 % to set custom margins
-\usepackage[left = 1cm, right = 1cm, bottom = 1.5cm, top = 1cm]{geometry}
+\usepackage[left = 1cm, right = 1cm, bottom = 1cm, top = 0.5cm]{geometry}
 
 % to be able to use color in document
 \usepackage[dvipsnames]{xcolor}
@@ -56,6 +56,7 @@
 \pagestyle{empty}
 
 \begin{document}
+    %% HEADER %%
     \begin{center}
         \Huge
         D\textsc{anish} S\textsc{hakeel} M\textsc{ohammad} \\
@@ -63,13 +64,18 @@
     % \vspace{-14pt}
     \begin{center}
         % \small
-        \seticon{faEnvelope} mohammadsdanish@gmail.com $\vert$
-        \seticon{faPhone} (+44) 078237-81284 $\vert$
+        \seticon{faEnvelope} mohammadsdanish@gmail.com \hspace{0.5em} $\vert$ \hspace{0.5em}
+        \seticon{faPhone} (+44) 078237-81284 \hspace{0.5em} $\vert$ \hspace{0.5em}
         \seticon{faGithub} \href{https://github.com/TheDansmod}{github.com/TheDansmod} \\ % $\vert$
-        \seticon{faLinkedin} \href{https://www.linkedin.com/in/danish-mohammad/}{www.linkedin.com/in/danish-mohammad/} $\vert$
+        \seticon{faLinkedin} \href{https://www.linkedin.com/in/danish-mohammad/}{www.linkedin.com/in/danish-mohammad/} \hspace{0.5em} $\vert$ \hspace{0.5em}
         \seticon{faHome} Zone 2, East London, E2 9HU \\
-        % \vspace{0.5em}
-        Eligible for Graduate Route Visa (2 Years, No Sponsorship Required)
+        Eligible for Graduate Route Visa (2 Years, No Sponsorship Required) \\
+        \vspace{0.5em}
+        \noindent\fbox{%
+            \parbox{0.8\textwidth}{%
+                AI/ML Engineer with 2+ years of industry experience at Cisco Systems and an MSc in Artificial Intelligence (Queen Mary University of London). Specialises in agentic AI systems, reinforcement learning, and Java and Python based backend engineering for production systems. Looking for AI Engineer and ML Engineer roles.
+            }%
+        }
     \end{center}
 
     %% EDUCATION %%
@@ -93,14 +99,17 @@
     \vspace{5pt}
     \noindent {\normalsize \textbf{Cisco Systems}, India \(\vert\) Software Engineer} \hfill 10 Aug 2022 -- 12 Sep 2024 (FT)
     \begin{itemize}[leftmargin=*]
-        \item Engineered scalable backend features in Java and Python and fixed critical bugs across multiple releases (3.3-3.5) of the Identity Services Engine (ISE) --- a policy-based network access control and identity management solution.
-        \item Developed pivotal skills in multi-tasking, system and database design, asynchronous distributed system debugging, and codebase comprehension and refactoring.
+        \item Software Engineer on Cisco's Identity Services Engine (ISE) on the Security and Policy Access (SPA) team. ISE is a network access control (NAC) and policy enforcement system for enterprises, in use by over 10,000 companies globally.
+        \item Contributed to Cisco AI Endpoint Analytics integration introduced in ISE 3.3, implementing backend logic to integrate automated profiling rule proposals from Cisco's managed ML engine, reducing manual policy configuration for previously unclassified devices.
+        % \item Developed backend features for Cisco ACI-TrustSec policy integration in ISE 3.4, implementing translation between ISE-local Security Group Tags (SGT) and Cisco ACI's Endpoint Group (EPG) and Endpoint Security Group (ESG) mappings, enabling consistent policy enforcement across TrustSec and ACI domains.
+        \item Diagnosed and resolved 80+ critical bugs across ISE releases 3.3–3.5 in a large-scale, asynchronous distributed system; issues spanned database consistency, concurrent session handling, and policy evaluation edge cases in production enterprise deployments.
     \end{itemize}
 
     \vspace{5pt}
     \noindent {\normalsize \textbf{Epsilon Data Management}, India \(\vert\) Analyst Intern} \hfill 08 Jun 2021 -- 09 Aug 2021 (FT)
     \begin{itemize}[leftmargin=*]
-        \item Developed scalable, fast, easy-to-use translation of proprietary SAS code for customer segmentation using python, reducing processing time by 40\%.
+        \item The data team relied on proprietary SAS code for customer segmentation followed by manual modification in Excel, which was slow and inaccessible to Python-based workflows. Tasked with rebuilding this pipeline in Python during a 2-month internship.
+        \item Designed and developed a scalable, Python-based translation of the SAS segmentation pipeline, ensuring functional parity and improved maintainability. Reduced pipeline processing time by 43\%, enabling faster iteration for the analytics team.
     \end{itemize}
 
     % \vspace{5pt}
@@ -117,18 +126,19 @@
     \vspace{5pt}
     \noindent {\normalsize \textbf{FRAG: A Multi-modal Multi-agent Fashion Recommendation RAG Agent} \href{https://github.com/TheDansmod/fashion_mas}{demo \faExternalLink*}} \hfill Dec 2025 -- Mar 2026
     \begin{itemize}[leftmargin=*]
-        \item Built an AI agent to provide clothing item recommendations to a user, sourced from a product catalogue, optionally based on reference images for style (casual, formal, etc), aesthetic (rugged, chic, etc), or coherence (what goes well with this) guidance.
-        \item Implements a Langgraph orchestrated multi-agent system, with a Self-RAG inspired self-evaluation loop to enhance recommendation quality; suggests items from a 300k item product catalogue located behind a custom-built MCP server backed by a Qdrant Vector DB.
-        \item Used production grade tooling to build a conversational web UI (through ChainLit), persistent chat history so sessions can be resumed after closing (through an SQLite-backed checkpointer), real-time streaming responses, and integrated monitoring with LangSmith to track API usage and debug the agent's reasoning.
+        \item  Fashion recommendation systems struggle to incorporate visual style references alongside textual preferences. Built an end-to-end agentic AI demo capable of recommending clothing items from a 300k-item catalogue using both text and image inputs.
+        \item Designed a LangGraph-orchestrated multi-agent system with a Self-RAG inspired self-evaluation loop; built a custom MCP server backed by Qdrant Vector DB, a ChainLit conversational UI with persistent SQLite-backed chat history, real-time streaming, and integrated LangSmith monitoring.
+        \item FRAG achieves a score of 9.3 / 10 on a diverse 60-query custom evaluation dataset using G-Eval with an LLM-as-a-judge framework.
     \end{itemize}
 
     \vspace{5pt}
     \noindent {\normalsize \textbf{Sudoku Puzzle Generation with Deep Reinforcement Learning}} \hfill Feb 2025 -- Apr 2025 \\
     \textit{Course}: Computational Creativity (Prof. Simon Colton)
     \begin{itemize}[leftmargin=*]
-        \item Implemented Reinforcement Learning algorithms like DDQN and Rainbow while using Convolutional Neural Networks as function approximators to generate valid sudoku puzzles.
-        % \item Used potential-based reward shaping along with a sudoku rater to address issues of sparse rewards.
-        \item Was able to generate sudokus with difficulty rating of 2 out of 6, with up to 51 (of 81) blanks.
+        \item Generating valid Sudoku puzzles algorithmically is a constrained combinatorial problem with no established RL benchmark.
+        \item Applied deep RL to autonomously generate valid puzzles of increasing difficulty.
+        \item Implemented DDQN and Rainbow algorithms using Convolutional Neural Networks as function approximators. Used potential-based reward shaping along with a sudoku rater to address issues of sparse rewards.
+        \item Successfully generated puzzles with upto 51 of 81 blanks, with average difficulty rating 67\% higher than naive random baseline.
     \end{itemize}
 
     % \vspace{5pt}
@@ -163,8 +173,9 @@
     \noindent {\normalsize \textbf{Application of Actor-Critic Methods to Improving Video Quality Experience}} \hfill Jan 2022 -- May 2022 (BITS) \\
     \textit{Advisor}: Dr. Paresh Saxena
     \begin{itemize}[leftmargin=*]
-        \item Explored Deep Reinforcement Learning techniques like Adversarially Robust A3C (AR-A3C) and Proximal Policy Optimisation (PPO) for server-side Adaptive Bitrate (ABR) algorithms used by streaming video players to optimise user quality of experience (QoE).
-        \item Incorporated implementation optimisations like advantage normalization and value function clipping into PPO after AR-A3C proved unstable. Outperformed the then state-of-the-art model, \href{https://dl.acm.org/doi/10.1145/3098822.3098843}{Pensieve}, by around \(30\%\).
+        \item Adaptive Bitrate (ABR) algorithms in streaming video players must balance bandwidth efficiency and user Quality of Experience (QoE).
+        \item Investigated whether Deep RL actor-critic methods could outperform the then state-of-the-art model (\href{https://dl.acm.org/doi/10.1145/3098822.3098843}{Pensieve}) for server-side ABR.
+        \item Implemented AR-A3C. It proved unstable, so pivoted to PPO with optimisations like advantage normalisation and value function clipping. Outperformed Pensieve by approximately 30\% on QoE metrics, validating the approach.
     \end{itemize}
 
     %% AWARDS %% - listing just a single one is not beneficial - either integrate it into other locations or remove it or add more
@@ -184,14 +195,14 @@
     \vspace{5pt}
     \noindent 
     \begin{tabular}{l p{16cm}}
-        \textbf{Coding Lang.} & Java, Python, C++, Bash, SQL \\
+        \textbf{Software} & Java, Python, SQL, Git, Docker, Unix \\ % , Java Spring, RabbitMQ, Redis\\
         \textbf{ML / AI} & Agentic AI, Reinforcement Learning (RL), Chainlit, Langsmith, Langchain, Langgraph, Qdrant, MCP (Model Context Protocol), Ollama, Hydra, PyTorch, numpy, pandas, sklearn, jupyter \\
-        \textbf{Other} & Git, Jenkins, Docker, Unix, \LaTeX \\
+        % \textbf{Other} & Git, Jenkins, Docker, Unix, \LaTeX \\
     \end{tabular}
 
     \pagestyle{fancy}
     \fancyhf{}
     \renewcommand{\footrulewidth}{0pt}
     \renewcommand{\headrulewidth}{0pt}
-    \rfoot{\normalsize Date: \textit{20 Mar, 2026}}
+    % \rfoot{\normalsize Date: \textit{20 Mar, 2026}}
 \end{document}
