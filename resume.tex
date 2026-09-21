@@ -73,7 +73,7 @@
         \vspace{0.5em}
         \noindent\fbox{%
             \parbox{0.87\textwidth}{%
-                AI/ML Engineer with 2+ years of industry experience at Cisco Systems and an MSc in Artificial Intelligence (Queen Mary University of London). Specialises in agentic AI systems, reinforcement learning, and Java and Python based backend engineering for production systems. Looking for AI Engineer and ML Engineer roles.
+                Python developer with four years of applied development experience spanning production software engineering, high-performance simulation systems, and statistical modelling. Demonstrated capacity to design and implement large-scale search and simulation engines (20M+ state transitions/second), rebuild production data pipelines, and apply rigorous benchmarking methodology to novel algorithms. Seeking to apply this combination of systems-engineering rigor and quantitative research to the development of production trading strategies and simulation engines.
             }%
         }
     \end{center}
@@ -84,12 +84,45 @@
     \vspace{-7pt}
     \hrule
     \vspace{5pt}
-    \noindent {\normalsize \textbf{Queen Mary University of London}}, London, UK \hfill 2024 -- 2025 \\
+    \noindent {\normalsize \textbf{Queen Mary University of London}}, London, UK \hfill 2024 -- 2026 \\
     {\normalsize Master of Science in Artificial Intelligence $\vert$ Merit}
 
     \vspace{5pt}
     \noindent {\normalsize \textbf{Birla Institute of Technology and Science}}, Pilani, India \hfill 2018 -- 2022 \\
     {\normalsize Bachelor of Engineering in Computer Science $\vert$ First Division}
+
+    %% PROJECTS %%
+    \vspace{10pt}
+    \noindent {\large \textcolor{headings}{\textbf{PROJECTS}}} \\
+    \vspace{-7pt}
+    \hrule
+
+    \vspace{5pt}
+    \noindent {\normalsize\textbf{High-Throughput Simulation Engine for Exhaustive Game Solving (Tinyhouse Chess)}} \hfill Sep 2026 - present
+    \begin{itemize}[leftmargin=*]
+        \item Exhaustive game-theoretic solution of a combinatorial game requires enumerating the full reachable state space via breadth-first search and subsequently propagating terminal-position values backward through the state graph (retrograde analysis); at full-game scale, the binding constraint is not move-generation compute but sustained write throughput to persistent storage.
+        \item Designed and implemented a Python-based move-generation and state-transition engine sustaining 20 million plies/second, through bitboard state representation, batched I/O with a sharded log-structured merge architecture to manage the I/O bottleneck.
+        \item Currently engineering a high-write-throughput persistence layer to support exhaustive state enumeration at full-game scale, as the prerequisite stage before implementing retrograde analysis to obtain a complete win/loss/draw classification over the entire reachable state space.
+        \item Directly transferable to production simulation-engine design: both problem classes require correctness-verified, high-throughput state transitions over large discrete state spaces under tight memory and I/O constraints, with performance bounded by the slower one between compute throughput and sustained write throughput.
+    \end{itemize}
+
+    \vspace{5pt}
+    \noindent {\normalsize \textbf{FRAG: A Multi-modal Multi-agent Fashion Recommendation RAG Agent} \href{https://github.com/TheDansmod/fashion_mas}{demo \faExternalLink*}} \hfill Dec 2025 -- Mar 2026
+    \begin{itemize}[leftmargin=*]
+        \item Built an end-to-end agentic Python system recommending items from a 300k-item catalogue using combined text and image inputs, addressing the inability of standard recommendation pipelines to jointly reason over visual and textual preference signals.
+        \item Designed a LangGraph-orchestrated multi-agent architecture with a Self-RAG-inspired self-evaluation loop; implemented a custom MCP server backed by a Qdrant vector database, with a persistent, streaming conversational interface.
+        \item Implemented production-style monitoring (LangSmith) to continuously track retrieval quality, generation failure modes, and agent-loop latency; used this telemetry to diagnose and close two systematic failure modes prior to final evaluation. This constitutes a monitoring/diagnosis workflow directly analogous to live strategy performance monitoring.
+        \item Designed a 60-query adversarial evaluation dataset and a calibrated LLM-as-a-judge scoring rubric (relevance, coherence, diversity) to obtain a defensible, bias-resistant evaluation signal; achieved 9.3/10 under this framework — evidence of rigorous, quantitative evaluation-design methodology applicable to strategy back-testing.
+
+    \end{itemize}
+
+    % \vspace{5pt}
+    % \noindent {\normalsize \textbf{MCTS Improvements for Sushi-Go}} \hfill Sep 2024 -- Nov 2024 (QMUL) \\
+    % \textit{Course}: AI in Games
+    % \begin{itemize}[leftmargin=*]
+    %     \item Implementation and comprehensive experimental evaluation of the impact of \href{https://link.springer.com/article/10.1007/s10462-022-10228-y}{improvements} (like using novel heuristics, progressive bias, and RAVE) to the Monte Carlo Tree Search (MCTS) algorithm within the \href{https://gaigresearch.github.io/projects/TAG}{Tabletop Games Framework} (TAG) for the game of Sushi Go!
+    %     \item Obtained a 12\% improvement over the existing advanced MCTS agent.
+    % \end{itemize}
 
     %% WORK EXPERIENCE %%
     \vspace{10pt}
@@ -99,12 +132,9 @@
     \vspace{5pt}
     \noindent {\normalsize \textbf{Cisco Systems}, India \(\vert\) Software Engineer} \hfill 10 Aug 2022 -- 12 Sep 2024 (FT)
     \begin{itemize}[leftmargin=*]
-        \item Software Engineer on Cisco's Identity Services Engine (ISE) on the Security and Policy Access (SPA) team. ISE is a network access control (NAC) and policy enforcement system for enterprises, in use by over 10,000 companies globally.
-        % \item Contributed to Cisco AI Endpoint Analytics integration introduced in ISE 3.3, implementing backend logic to integrate automated profiling rule proposals from Cisco's managed ML engine, reducing manual policy configuration for previously unclassified devices. - re-write for micro1
-        \item Contributed to Cisco AI Endpoint Analytics (ISE 3.3) by integrating automated profiling rule proposals from Cisco's managed ML engine into production policy enforcement workflows; defined acceptance criteria and edge-case validation logic to determine which ML-generated proposals were reliable enough to be surfaced to network administrators, reducing erroneous auto-classification in previously unclassified device categories.
-        % \item Developed backend features for Cisco ACI-TrustSec policy integration in ISE 3.4, implementing translation between ISE-local Security Group Tags (SGT) and Cisco ACI's Endpoint Group (EPG) and Endpoint Security Group (ESG) mappings, enabling consistent policy enforcement across TrustSec and ACI domains.
-        % \item Diagnosed and resolved 80+ critical bugs across ISE releases 3.3–3.5 in a large-scale, asynchronous distributed system; issues spanned database consistency, concurrent session handling, and policy evaluation edge cases in production enterprise deployments. - need to reframe this for micro1
-        \item Conducted systematic failure analysis across 80+ critical production bugs in ISE 3.3–3.5, spanning database consistency anomalies, concurrent session race conditions, and policy evaluation edge cases; developed reproducible test cases to isolate root causes in a large-scale asynchronous distributed system, translating ambiguous production failures into structured, tractable engineering problems.
+        \item Software Engineer on Cisco's Identity Services Engine (ISE), a network access control and policy enforcement platform deployed across 10,000+ enterprises globally; work centred on production correctness and reliability of a large-scale asynchronous distributed system.
+        \item Defined acceptance criteria and edge-case validation logic to determine which ML-generated device-classification proposals were reliable enough for production deployment, reducing erroneous auto-classification in previously unclassified device categories. This constitutes direct experience in setting production-readiness criteria for model-driven automated decisions.
+        \item Conducted systematic failure analysis across 80+ production defects spanning database consistency anomalies, concurrent race conditions, and policy-evaluation edge cases; built reproducible test cases isolating root causes, converting ambiguous production failures into structured, tractable engineering problems — a discipline directly applicable to testing and hardening production trading strategies.
     \end{itemize}
 
     \vspace{5pt}
@@ -119,42 +149,6 @@
     % \noindent {\normalsize \textbf{Parentlane}, India \(\vert\) Machine Learning Intern} \hfill 18 May 2020 -- 28 Jun 2020 (FT)
     % \begin{itemize}[leftmargin=*]
     %     \item Leveraged a pre-existing question-answer and article corpus along with transformer based article summarisation and similarity based question matching to develop automated content suggestion and answer retrieval for user queries.
-    % \end{itemize}
-
-    %% PROJECTS %%
-    \vspace{10pt}
-    \noindent {\large \textcolor{headings}{\textbf{PROJECTS}}} \\
-    \vspace{-7pt}
-    \hrule
-
-    \vspace{5pt}
-    \noindent {\normalsize \textbf{FRAG: A Multi-modal Multi-agent Fashion Recommendation RAG Agent} \href{https://github.com/TheDansmod/fashion_mas}{demo \faExternalLink*}} \hfill Dec 2025 -- Mar 2026
-    \begin{itemize}[leftmargin=*]
-        \item  Fashion recommendation systems struggle to incorporate visual style references alongside textual preferences. Built an end-to-end agentic AI demo capable of recommending clothing items from a 300k-item catalogue using both text and image inputs.
-        \item Designed a LangGraph-orchestrated multi-agent system with a Self-RAG inspired self-evaluation loop; built a custom MCP server backed by Qdrant Vector DB, a ChainLit conversational UI with persistent SQLite-backed chat history, real-time streaming.
-        % \item FRAG achieves a score of 9.3 / 10 on a diverse 60-query custom evaluation dataset using G-Eval with an LLM-as-a-judge framework. - need to re-write this for micro1
-        \item Implemented LangSmith-based monitoring to continuously track retrieval quality, generation failures, and agent loop latencies in production; used this telemetry to identify and close two systematic failure modes in the self-evaluation loop prior to final evaluation.
-        \item Designed a 60-query adversarial evaluation dataset covering diverse style intents, cross-modal ambiguities, and catalogue distribution edge cases; calibrated a G-Eval LLM-as-a-judge rubric with explicit scoring criteria per dimension (relevance, style coherence, diversity) to ensure evaluation signal was defensible and not susceptible to length or verbosity biases; FRAG achieved 9.3 / 10 on this framework.
-
-    \end{itemize}
-
-    \vspace{5pt}
-    \noindent {\normalsize \textbf{Sudoku Puzzle Generation with Deep Reinforcement Learning}} \hfill Feb 2025 -- Apr 2025 \\
-    \textit{Course}: Computational Creativity (Prof. Simon Colton)
-    \begin{itemize}[leftmargin=*]
-        \item Generating valid Sudoku puzzles algorithmically is a constrained combinatorial problem with no established RL benchmark.
-        \item Applied deep RL to autonomously generate valid puzzles of increasing difficulty.
-        \item Implemented DDQN and Rainbow algorithms using Convolutional Neural Networks as function approximators. Used potential-based reward shaping along with a sudoku rater to address issues of sparse rewards.
-        % \item Successfully generated puzzles with upto 51 of 81 blanks, with average difficulty rating 67\% higher than naive random baseline. - rewrite for micro1
-        \item Designed a difficulty evaluation rubric using a Sudoku-specific rating function as a proxy reward signal; validated that generated puzzles of 51 blanks achieved a difficulty score 67\% above a naive random baseline, demonstrating that the RL policy had learned a coherent difficulty-shaping strategy rather than merely maximising blank count.
-    \end{itemize}
-
-    % \vspace{5pt}
-    % \noindent {\normalsize \textbf{MCTS Improvements for Sushi-Go}} \hfill Sep 2024 -- Nov 2024 (QMUL) \\
-    % \textit{Course}: AI in Games
-    % \begin{itemize}[leftmargin=*]
-    %     \item Implementation and comprehensive experimental evaluation of the impact of \href{https://link.springer.com/article/10.1007/s10462-022-10228-y}{improvements} (like using novel heuristics, progressive bias, and RAVE) to the Monte Carlo Tree Search (MCTS) algorithm within the \href{https://gaigresearch.github.io/projects/TAG}{Tabletop Games Framework} (TAG) for the game of Sushi Go!
-    %     \item Obtained a 12\% improvement over the existing advanced MCTS agent.
     % \end{itemize}
 
     %% AWARDS %% - listing just a single one is not beneficial - either integrate it into other locations or remove it or add more
@@ -175,26 +169,32 @@
     \noindent {\normalsize \textbf{Causal Discovery in the presence of Latent Confounders}} \hfill May 2025 -- Dec 2025 (QMUL) \\
     \textit{Advisor}: Dr. Anthony Constantinou \hfill \href{https://github.com/TheDansmod/qmul-msc-ai-code-master-thesis/blob/main/dissertation_report.pdf}{paper \faExternalLink*} $\vert$ \href{https://github.com/TheDansmod/qmul-msc-ai-code-master-thesis}{code \faExternalLink*}
     \begin{itemize}[leftmargin=*]
-        \item Worked on discovering cause-effect relationships between variables when some variables are unobserved, common in real-world data.
-        \item Contributed two novel, fast mapping functions that helped convert discrete optimization problem into a continuous optimization one.
-        \item Used Deep Reinforcement Learning (PPO) and Evolutionary Strategies (CMA-ES) as black-box optimizers to solve the problem.
-        % \item Benchmarked against SOTA algorithms, achieving competitive accuracy while delivering a 30\% reduction in computational time. - rewrite for micro1
-        \item Designed a rigorous benchmarking protocol against SOTA causal discovery algorithms across synthetic and real-world graphs with varying confounder densities; validated that the 30\% computational reduction did not degrade structural accuracy beyond acceptable margins, establishing the conditions under which the proposed optimisation is and is not appropriate to apply.
+        \item Addressed the problem of recovering cause–effect structure between variables when some variables are unobserved — a setting common in real-world, non-experimental data.
+        \item Contributed two novel mapping functions converting a discrete combinatorial-optimisation problem into a continuous one, enabling the use of gradient-free black-box optimisers (PPO, CMA-ES) in place of combinatorial search.
+        \item Designed a rigorous benchmarking protocol against state-of-the-art causal discovery algorithms across synthetic and real-world graphs of varying confounder density; validated that a 30\% reduction in computational cost did not degrade structural accuracy beyond acceptable margins, establishing the precise operating conditions under which the proposed optimisation is appropriate — a methodology directly analogous to validating a simulation or backtesting engine against a reference implementation.
     \end{itemize}
 
     %% BACHELOR'S THESIS %%
     \vspace{10pt}
-    \noindent {\large \textcolor{headings}{\textbf{BACHELOR'S THESIS}}} \\
+    \noindent {\large \textcolor{headings}{\textbf{ADDITIONAL PROJECTS}}} \\
     \vspace{-7pt}
     \hrule
     \vspace{5pt}
-    \noindent {\normalsize \textbf{Application of Actor-Critic Methods to Improving Video Quality Experience}} \hfill Jan 2022 -- May 2022 (BITS) \\
+    \noindent {\normalsize \textbf{Bachelor's Thesis: Application of Actor-Critic Methods to Improving Video Quality Experience}} \hfill Jan -- May 2022 (BITS) \\
     \textit{Advisor}: Dr. Paresh Saxena
     \begin{itemize}[leftmargin=*]
         \item Adaptive Bitrate (ABR) algorithms in streaming video players must balance bandwidth efficiency and user Quality of Experience (QoE).
         \item Investigated whether Deep RL actor-critic methods could outperform the then state-of-the-art model (\href{https://dl.acm.org/doi/10.1145/3098822.3098843}{Pensieve}) for server-side ABR.
         % \item Implemented AR-A3C. It proved unstable, so pivoted to PPO with optimisations like advantage normalisation and value function clipping. Outperformed Pensieve by approximately 30\% on QoE metrics, validating the approach.
         \item Initially implemented AR-A3C; upon diagnosing training instability as arising from high-variance policy gradients in the streaming reward landscape rather than hyperparameter misconfiguration, made the principled decision to pivot to PPO with advantage normalisation and value function clipping. Outperformed Pensieve by approximately 30\% on QoE metrics, validating the approach.
+    \end{itemize}
+
+    \vspace{5pt}
+    \noindent {\normalsize \textbf{Sudoku Puzzle Generation with Deep Reinforcement Learning}} \hfill Feb 2025 -- Apr 2025 \\
+    \textit{Course}: Computational Creativity (Prof. Simon Colton)
+    \begin{itemize}[leftmargin=*]
+        \item Applied deep RL (DDQN, Rainbow) with convolutional function approximators to autonomously generate valid Sudoku puzzles of controlled, increasing difficulty, addressing sparse-reward shaping via a potential-based reward function.
+        \item Designed a quantitative difficulty-evaluation rubric and validated that generated puzzles achieved a difficulty score 67\% above a randomised baseline, confirming the policy had learned a coherent difficulty-shaping strategy rather than a degenerate heuristic.
     \end{itemize}
 
     %% TECHNICAL SKILLS %%
@@ -204,11 +204,12 @@
     \hrule
     \vspace{5pt}
     \noindent 
-    \begin{tabular}{l p{16cm}}
-        \textbf{Software} & Java, Python, SQL, Git, Docker, Unix \\ % , Java Spring, RabbitMQ, Redis\\
-        \textbf{ML / AI} & Evaluation Design, LLM-as-a-judge (G-Eval), Reward Shaping, RLHF concepts, Agentic AI, Reinforcement Learning (RL), Chainlit, Langsmith, Langchain, Langgraph, Qdrant, MCP (Model Context Protocol), Ollama, Hydra, PyTorch, numpy, pandas, sklearn, jupyter \\
-        \textbf{Research \& Eval} & Benchmarking, Root Cause Analysis, Annotation Schema Design, Quality Calibration \\
-        % \textbf{Other} & Git, Jenkins, Docker, Unix, \LaTeX \\
+    \begin{tabular}{l p{15cm}}
+        \textbf{Software} & Python (primary), high-performance/algorithmic programming, data structures, simulation engine design, Java, SQL, Git, Docker, Unix \\% , Java Spring, RabbitMQ, Redis\\
+        \textbf{Quant \& Stat Methods} & reinforcement learning (PPO, DDQN, Rainbow), evolutionary strategies (CMA-ES), reward shaping, Monte Carlo-style simulation design, statistical evaluation and benchmarking design \\
+        \textbf{Data Engr} & pipeline construction and validation, ETL, pandas, numpy, sklearn, SQLite, Qdrant (vector DB) \\
+        \textbf{ML / AI} & PyTorch, LangChain/LangGraph, LangSmith, Chainlit, MCP (Model Context Protocol), Hydra, Ollama, jupyter \\
+        \textbf{Other} & Git, Jenkins, Docker, Unix, \LaTeX \\
     \end{tabular}
 
     \pagestyle{fancy}
