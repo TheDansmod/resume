@@ -73,7 +73,7 @@
         \vspace{0.5em}
         \noindent\fbox{%
             \parbox{0.9\textwidth}{%
-                Backend software engineer with 2+ years of production experience building object-oriented RESTful APIs against relational (Oracle) and non-relational (Redis) data stores at scale, including diagnosing production concurrency and data-consistency failures; directly relevant to 3rd-line support and platform ownership. Grounded in automated testing, CI/CD, and Scrum-based delivery with formal code review. MSc in Artificial Intelligence (Queen Mary University of London) adds further algorithmic rigour. Seeking to bring this ownership-driven engineering approach to ALP's commercial software platform.
+                AI engineer specialising in production-grade agentic systems: multi-agent orchestration, reasoning pipelines, and LLM evaluation frameworks; combined with 2+ years of enterprise software experience integrating machine-learned outputs into live, production decision workflows at Cisco Systems. MSc in Artificial Intelligence (Queen Mary University of London), with hands-on delivery of a LangGraph-orchestrated multi-agent RAG system, a custom Model Context Protocol (MCP) server, and a calibrated LLM-as-judge benchmarking framework. Seeking to apply this agentic-AI-to-production pipeline, spanning foundation model integration, tool-use orchestration, and rigorous evaluation design, to SLB's domain digital products, translating complex technical workflows into reliable, benchmarked agent architectures.
             }%
         }
     \end{center}
@@ -86,13 +86,11 @@
     \vspace{5pt}
     \noindent 
     \hspace{-5pt}
-    \begin{tabular}{l p{15.5cm}}
-        \textbf{Languages \& OOP} & Java, Python, SQL — strong grounding in object-oriented design principles \\
-        \textbf{Backend \& APIs} & RESTful API design and implementation, CRUD services, input validation, authentication/authorisation \\
-        \textbf{Data Tech} & Oracle (relational), Redis (in-memory/non-relational), query and cache-layer performance tuning at scale \\
-        \textbf{Testing \& Quality} & Unit testing, integration testing, property-based testing (Hypothesis), test coverage enforcement \\
-        \textbf{DevOps \& Collab} & Jenkins CI/CD, Docker, AWS managed container services, Git/GitHub with formal peer code review, Scrum (sprint-based delivery, daily stand-ups) \\
-        \textbf{Additional} & PyTorch, reinforcement learning, evolutionary strategies, benchmarking and root-cause analysis
+    \begin{tabular}{l p{15.6cm}}
+        \textbf{GenAI Systems} & LangGraph, LangChain, multi-agent orchestration, Model Context Protocol (MCP), Retrieval-Augmented Generation (RAG), Self-RAG evaluation loops, tool-use orchestration, LangSmith (production observability), Chainlit, Ollama, Qdrant (vector DB), Hydra \\
+        \textbf{AI/ML Model Eval} & LLM-as-judge (G-Eval) rubric design, adversarial evaluation dataset construction, continuous evaluation frameworks, quality calibration, annotation schema design, root cause and failure-mode analysis \\
+        \textbf{ML / RL} & PyTorch, Reinforcement Learning (DDQN, Rainbow, PPO), Evolutionary Strategies (CMA-ES), Convolutional Neural Networks, reward shaping, RLHF concepts, NumPy, pandas, scikit-learn, Jupyter \\
+        \textbf{Software \& Cloud} & Java, Python, SQL, RESTful API design, FastAPI, Pydantic, dependency-injector architectures, Docker, AWS managed container services, Git, Unix, CI/CD (Jenkins), automated testing (pytest, Selenium, Hypothesis property-based testing)
     \end{tabular}
 
     %% WORK EXPERIENCE %%
@@ -103,11 +101,10 @@
     \vspace{5pt}
     \noindent {\normalsize \textbf{Cisco Systems}, India \(\vert\) Software Engineer} \hfill 10 Aug 2022 -- 12 Sep 2024 (FT)
     \begin{itemize}[leftmargin=*]
-        \item Software Engineer on Cisco's Identity Services Engine (ISE), a large-scale network access control (NAC) and policy-enforcement platform deployed by over 10,000 organisations globally.
-        \item Designed and maintained object-oriented, Java-based RESTful CRUD APIs against a persistent Oracle relational database and a Redis in-memory cache for endpoint identity records, implementing the read/write API layer across both data stores to meet production latency requirements; direct experience spanning relational and non-relational data technologies.
-        \item Integrated automated profiling-rule proposals from a managed ML classification engine into production policy-enforcement workflows (Cisco AI Endpoint Analytics, ISE 3.3-3.5).
-        \item Operated within a Scrum team (daily stand-ups, sprint-based delivery) and a Jenkins-based CI/CD pipeline; wrote unit tests to meet mandated coverage thresholds and authored functional/integration tests using Selenium for owned code.
-        \item Conducted systematic failure analysis across 80+ critical production bugs spanning database consistency anomalies and concurrent session race conditions in an asynchronous distributed system; developed reproducible test cases to isolate root causes, converting ambiguous production incidents into structured, tractable engineering problems; directly applicable to 3rd-line platform support responsibilities.
+        \item Integrated automated ML-model outputs (Cisco's managed profiling-rule engine, Cisco AI Endpoint Analytics, ISE 3.3) into policy-enforcement workflows on Cisco's Identity Services Engine (ISE), a network access control platform deployed across 10,000+ organisations globally, direct experience embedding AI/ML model outputs into enterprise-scale, production software.
+        \item Designed and maintained Java-based RESTful APIs against Oracle (persistent) and Redis (in-memory) data stores, implementing the read/write layer that served ML-classified identity records. 
+        \item Conducted systematic failure analysis across 80+ critical production defects spanning database consistency and concurrency, converting ambiguous production failures into reproducible, structured engineering problems, directly transferable to building robust, continuously evaluated AI systems.
+        \item Operated within a Scrum team and Jenkins-based CI/CD pipeline; authored unit, integration, and Selenium-based functional tests; participated in formal, bidirectional GitHub code review, demonstrating cross-functional collaboration and delivery discipline required for platform engineering integration work.
     \end{itemize}
 
     \vspace{5pt}
@@ -125,18 +122,20 @@
     \hrule
 
     \vspace{5pt}
+    \noindent {\normalsize \textbf{FRAG: A Multi-modal Multi-agent Fashion Recommendation RAG Agent} \href{https://github.com/TheDansmod/fashion_mas}{demo \faExternalLink*}} \hfill Dec 2025 -- Mar 2026
+    \begin{itemize}[leftmargin=*]
+        \item Designed and built a LangGraph-orchestrated multi-agent agentic backend with a Self-RAG-inspired self-evaluation loop, recommending items from a 300k-item catalogue using combined text and image input, a compound AI system integrating foundation models, retrieval, and tool orchestration.
+        \item Built a custom MCP server on FastAPI backed by Qdrant vector DB, with Pydantic-based configuration management and a dependency injector architecture for testability; validated with a coverage-instrumented pytest suite; used Docker for the Qdrant containerisation, with a Chainlit conversational UI.
+        \item Implemented LangSmith-based production observability to continuously monitor retrieval quality, generation failures, and agent-loop latency, using this telemetry to diagnose and resolve failure modes prior to final evaluation, direct precedent for establishing agent evaluation frameworks.
+        \item Designed a 60-query adversarial evaluation dataset spanning style intents, cross-modal ambiguities, and catalogue edge cases; calibrated a G-Eval LLM-as-judge rubric with explicit per-dimension scoring criteria to guard against verbosity bias. Achieved 9.3/10 on this framework, demonstrating end-to-end capability in agent benchmarking and acceptance-criteria design.
+    \end{itemize}
+
+    \vspace{5pt}
     \noindent {\normalsize\textbf{High-Throughput Engine for Exhaustive Game Solving (Tinyhouse Chess)}} \hfill Sep 2026 - present
     \begin{itemize}[leftmargin=*]
         \item Diagnosed a memory-mapped-file storage layer as a write-throughput bottleneck in a high-throughput search engine; designed and implemented a sharded log-structured merge (LSM) storage engine with an in-memory write buffer, sustaining required throughput within a constrained disk budget.
         \item Benchmarked the custom LSM design against RocksDB, demonstrating higher sustained write throughput and lower disk-footprint overhead; direct evidence of database performance analysis and tuning at scale.
         \item Applied property-based testing (Hypothesis) to systematically surface edge-case bugs in state-transition logic.
-    \end{itemize}
-
-    \vspace{5pt}
-    \noindent {\normalsize \textbf{FRAG: A Multi-modal Multi-agent Fashion Recommendation RAG Agent} \href{https://github.com/TheDansmod/fashion_mas}{demo \faExternalLink*}} \hfill Dec 2025 -- Mar 2026
-    \begin{itemize}[leftmargin=*]
-        \item Built a FastAPI-based backend service with a Qdrant vector database, Pydantic-based configuration management, and a dependency-injector-driven architecture designed explicitly for testability; validated with a pytest suite instrumented with coverage tracking.
-        \item Implemented production-style observability (LangSmith) to track system latency and diagnose failure modes, applying the same root-cause-analysis discipline used in production incident triage.
     \end{itemize}
 
     %% EDUCATION %%
@@ -163,11 +162,8 @@
     \noindent {\normalsize \textbf{Causal Discovery in the presence of Latent Confounders}} \hfill May 2025 -- Dec 2025 (QMUL) \\
     \textit{Advisor}: Dr. Anthony Constantinou \hfill \href{https://github.com/TheDansmod/qmul-msc-ai-code-master-thesis/blob/main/dissertation_report.pdf}{paper \faExternalLink*} $\vert$ \href{https://github.com/TheDansmod/qmul-msc-ai-code-master-thesis}{code \faExternalLink*}
     \begin{itemize}[leftmargin=*]
-        \item Worked on discovering cause-effect relationships between variables when some variables are unobserved, common in real-world data.
-        \item Contributed two novel, fast mapping functions that helped convert discrete optimization problem into a continuous optimization one.
-        \item Used Deep Reinforcement Learning (PPO) and Evolutionary Strategies (CMA-ES) as black-box optimizers to solve the problem.
-        % \item Benchmarked against SOTA algorithms, achieving competitive accuracy while delivering a 30\% reduction in computational time. - rewrite for micro1
-        \item Designed a rigorous benchmarking protocol against SOTA causal discovery algorithms across synthetic and real-world graphs with varying confounder densities; validated that the 30\% computational reduction did not degrade structural accuracy beyond acceptable margins, establishing the conditions under which the proposed optimisation is and is not appropriate to apply.
+        \item Contributed two novel mapping functions converting a discrete causal-discovery optimisation problem into a continuous one, solved using Deep Reinforcement Learning (PPO) and Evolutionary Strategies (CMA-ES) as black-box optimisers.
+        \item Designed a rigorous benchmarking protocol against state-of-the-art causal discovery algorithms across synthetic and real-world graphs with varying confounder densities, establishing the boundary conditions under which a 30\% computational reduction preserved structural accuracy, evidence of disciplined evaluation-framework design applicable to domain foundation model benchmarking.
     \end{itemize}
 
     \pagestyle{fancy}
