@@ -1,4 +1,4 @@
-\documentclass[11pt]{extarticle}
+\documentclass[9pt]{extarticle}
 
 % to be able to add references and citations and links in the document
 \usepackage[colorlinks=true, linkcolor=blue, urlcolor=cyan]{hyperref}
@@ -65,15 +65,16 @@
     \begin{center}
         % \small
         \seticon{faEnvelope} mohammadsdanish@gmail.com \hspace{0.5em} $\vert$ \hspace{0.5em}
-        \seticon{faPhone} (+44) 078237-81284 \hspace{0.5em} $\vert$ \hspace{0.5em}
+        \seticon{faPhone} (+91) 95520-11998 \hspace{0.5em} $\vert$ \hspace{0.5em}
         \seticon{faGithub} \href{https://github.com/TheDansmod}{github.com/TheDansmod} \\ % $\vert$
         \seticon{faLinkedin} \href{https://www.linkedin.com/in/danish-mohammad/}{www.linkedin.com/in/danish-mohammad/} \hspace{0.5em} $\vert$ \hspace{0.5em}
-        \seticon{faHome} Zone 2, East London, E2 9HU \\
-        Full UK work authorization (Graduate visa) until April 2028, no sponsorship required.\\
+        \seticon{faHome} Pune, Maharashtra, India\\
+        Open to relocation. \\
+        % Full UK work authorization (Graduate visa) until April 2028, no sponsorship required.\\
         \vspace{0.5em}
         \noindent\fbox{%
-            \parbox{0.9\textwidth}{%
-                AI engineer specialising in production-grade agentic systems: multi-agent orchestration, reasoning pipelines, and LLM evaluation frameworks; combined with 2+ years of enterprise software experience integrating machine-learned outputs into live, production decision workflows at Cisco Systems. MSc in Artificial Intelligence (Queen Mary University of London), with hands-on delivery of a LangGraph-orchestrated multi-agent RAG system, a custom Model Context Protocol (MCP) server, and a calibrated LLM-as-judge benchmarking framework. Seeking to apply this agentic-AI-to-production pipeline, spanning foundation model integration, tool-use orchestration, and rigorous evaluation design, to SLB's domain digital products, translating complex technical workflows into reliable, benchmarked agent architectures.
+            \parbox{0.8\textwidth}{%
+                AI/ML Engineer with 2+ years of industry experience at Cisco Systems and an MSc in Artificial Intelligence (Queen Mary University of London). Specialises in agentic AI systems, reinforcement learning, and Java and Python based backend engineering for production systems. Looking for AI Engineer and ML Engineer roles.
             }%
         }
     \end{center}
@@ -86,25 +87,68 @@
     \vspace{5pt}
     \noindent 
     \hspace{-5pt}
-    \begin{tabular}{l p{15.6cm}}
-        \textbf{GenAI Systems} & LangGraph, LangChain, multi-agent orchestration, Model Context Protocol (MCP), Retrieval-Augmented Generation (RAG), Self-RAG evaluation loops, tool-use orchestration, LangSmith (production observability), Chainlit, Ollama, Qdrant (vector DB), Hydra \\
-        \textbf{AI/ML Model Eval} & LLM-as-judge (G-Eval) rubric design, adversarial evaluation dataset construction, continuous evaluation frameworks, quality calibration, annotation schema design, root cause and failure-mode analysis \\
-        \textbf{ML / RL} & PyTorch, Reinforcement Learning (DDQN, Rainbow, PPO), Evolutionary Strategies (CMA-ES), Convolutional Neural Networks, reward shaping, RLHF concepts, NumPy, pandas, scikit-learn, Jupyter \\
-        \textbf{Software \& Cloud} & Java, Python, SQL, RESTful API design, FastAPI, Pydantic, dependency-injector architectures, Docker, AWS managed container services, Git, Unix, CI/CD (Jenkins), automated testing (pytest, Selenium, Hypothesis property-based testing)
+    \begin{tabular}{l p{15.8cm}}
+        \textbf{Agentic AI \& LLMs} & MCP (Model Context Protocol) server design, LangGraph multi-agent orchestration, tool-calling and agent state management, LangChain, LangSmith (production observability), Self-RAG-style self-evaluation loops, Ollama, Chainlit \\
+        \textbf{ML / AI} & Reinforcement Learning (PPO, DDQN, Rainbow), Evolutionary Strategies (CMA-ES), Evaluation Design, LLM-as-a-judge (G-Eval), Reward Shaping, PyTorch, Numba (JIT compilation), numpy, pandas, scikit-learn, Hydra, Jupyter \\
+        \textbf{Backend \& Systems} & Python, Java, FastAPI, RESTful API design, microservices, Pydantic, dependency-injector, pytest (with coverage), asynchronous systems, distributed systems debugging, Docker, Git workflow automation \\% , Java Spring, RabbitMQ, Redis\\
+        \textbf{Data \& Storage} & Qdrant (vector DB), SQLite, RocksDB (evaluated), custom sharded LSM-tree design, memory-mapped I/O, SQL \\
     \end{tabular}
 
+    %% PROJECTS %%
+    \vspace{20pt}
+    \noindent {\large \textcolor{headings}{\textbf{PROJECTS}}} \\
+    \vspace{-7pt}
+    \hrule
+
+    \vspace{5pt}
+    \noindent {\normalsize \textbf{FRAG: A Multi-modal Multi-agent Fashion Recommendation RAG Agent} \href{https://github.com/TheDansmod/fashion_mas}{demo \faExternalLink*}} \hfill Dec 2025 -- Mar 2026
+    \begin{itemize}[leftmargin=*]
+        \item Designed and built an agentic backend service: a LangGraph-orchestrated multi-agent system with a Self-RAG-inspired self-evaluation loop recommending items from a 300k-item catalogue from combined text and image input.
+        \item Built a custom MCP server on FastAPI, backed by Qdrant Vector DB, with Pydantic-based configuration management and a dependency-injector-driven architecture for testability; validated correctness with a pytest suite instrumented with coverage tracking. Containerized the Qdrant dependency via Docker and built a Chainlit conversational UI with persistent SQLite-backed chat history and real-time streaming.
+        \item Implemented LangSmith-based production observability to continuously track retrieval quality, generation failures, and agent-loop latency; used this telemetry to diagnose and close two systematic failure modes in the self-evaluation loop prior to final evaluation.
+        \item Designed a 60-query adversarial evaluation dataset spanning diverse style intents, cross-modal ambiguities, and catalogue distribution edge cases; calibrated a G-Eval LLM-as-a-judge rubric with explicit per-dimension scoring criteria (relevance, style coherence, diversity) to defend against length/verbosity bias. FRAG achieved 9.3/10 on this framework.
+    \end{itemize}
+
+    \vspace{5pt}
+    \noindent {\normalsize\textbf{High-Throughput Engine for Exhaustive Game Solving (Tinyhouse Chess)}} \hfill Sep 2026 - present
+    \begin{itemize}[leftmargin=*]
+        \item Building a high-throughput game-solving engine for a Tinyhouse chess variant, targeting full-game resolution via exhaustive breadth-first search (BFS) over the reachable state space followed by retrograde (backward-induction) analysis from terminal positions.
+        \item Achieved 20 million plies/second throughput in the core engine loop by combining bitboard-based state representation with Numba JIT compilation of computation heavy kernels, avoiding a rewrite into a compiled language while retaining Python for orchestration and I/O.
+        \item Diagnosed memory-mapped-file storage as a write-throughput bottleneck for the BFS visited-state table; designed and implemented a sharded log-structured-merge (LSM) storage engine with an in-memory write buffer and streaming, memory-mapped-file-based compaction to sustain the required write throughput within a constrained disk budget.
+        \item Benchmarked the LSM design against RocksDB as an off-the-shelf alternative; RocksDB's generic per-key overhead (block indices, bloom filters, compression metadata) produced both lower sustained write throughput and disk-footprint overhead exceeding the available budget, motivating a workload-specific storage engine exploiting fixed-width, bitboard-derived keys.
+    \end{itemize}
+
+     \vspace{5pt}
+    \noindent {\normalsize \textbf{Sudoku Puzzle Generation with Deep Reinforcement Learning}} \hfill Feb 2025 -- Apr 2025 \\
+    \textit{Course}: Computational Creativity (Prof. Simon Colton)
+    \begin{itemize}[leftmargin=*]
+        \item Generating valid Sudoku puzzles algorithmically is a constrained combinatorial problem with no established RL benchmark.
+        \item Applied deep RL to autonomously generate valid puzzles of increasing difficulty.
+        \item Implemented DDQN and Rainbow algorithms using Convolutional Neural Networks as function approximators. Used potential-based reward shaping along with a sudoku rater to address issues of sparse rewards.
+        % \item Successfully generated puzzles with upto 51 of 81 blanks, with average difficulty rating 67\% higher than naive random baseline. - rewrite for micro1
+        \item Designed a difficulty evaluation rubric using a Sudoku-specific rating function as a proxy reward signal; validated that generated puzzles of 51 blanks achieved a difficulty score 67\% above a naive random baseline, demonstrating that the RL policy had learned a coherent difficulty-shaping strategy rather than merely maximising blank count.
+    \end{itemize}
+
+    % \vspace{5pt}
+    % \noindent {\normalsize \textbf{MCTS Improvements for Sushi-Go}} \hfill Sep 2024 -- Nov 2024 (QMUL) \\
+    % \textit{Course}: AI in Games
+    % \begin{itemize}[leftmargin=*]
+    %     \item Implementation and comprehensive experimental evaluation of the impact of \href{https://link.springer.com/article/10.1007/s10462-022-10228-y}{improvements} (like using novel heuristics, progressive bias, and RAVE) to the Monte Carlo Tree Search (MCTS) algorithm within the \href{https://gaigresearch.github.io/projects/TAG}{Tabletop Games Framework} (TAG) for the game of Sushi Go!
+    %     \item Obtained a 12\% improvement over the existing advanced MCTS agent.
+    % \end{itemize}
+
     %% WORK EXPERIENCE %%
-    \vspace{10pt}
+    \vspace{20pt}
     \noindent {\large \textcolor{headings}{\textbf{WORK EXPERIENCE}}} \\
     \vspace{-7pt}
     \hrule
     \vspace{5pt}
     \noindent {\normalsize \textbf{Cisco Systems}, India \(\vert\) Software Engineer} \hfill 10 Aug 2022 -- 12 Sep 2024 (FT)
     \begin{itemize}[leftmargin=*]
-        \item Integrated automated ML-model outputs (Cisco's managed profiling-rule engine, Cisco AI Endpoint Analytics, ISE 3.3) into policy-enforcement workflows on Cisco's Identity Services Engine (ISE), a network access control platform deployed across 10,000+ organisations globally, direct experience embedding AI/ML model outputs into enterprise-scale, production software.
-        \item Designed and maintained Java-based RESTful APIs against Oracle (persistent) and Redis (in-memory) data stores, implementing the read/write layer that served ML-classified identity records. 
-        \item Conducted systematic failure analysis across 80+ critical production defects spanning database consistency and concurrency, converting ambiguous production failures into reproducible, structured engineering problems, directly transferable to building robust, continuously evaluated AI systems.
-        \item Operated within a Scrum team and Jenkins-based CI/CD pipeline; authored unit, integration, and Selenium-based functional tests; participated in formal, bidirectional GitHub code review, demonstrating cross-functional collaboration and delivery discipline required for platform engineering integration work.
+        \item Software Engineer on Cisco's Identity Services Engine (ISE), a large-scale network access control (NAC) and policy enforcement platform used by over 10,000 companies globally.
+        \item Designed and maintained Java-based RESTful CRUD APIs against a backing database for endpoint identity records produced by a cloud-hosted ML clustering microservice performing device classification.
+        \item Contributed to Cisco AI Endpoint Analytics (ISE 3.3) by integrating automated profiling-rule proposals from Cisco's managed ML engine into production policy-enforcement workflows.
+        \item Conducted systematic failure analysis across 80+ critical production bugs in ISE 3.3–3.5 spanning database consistency anomalies, and concurrent session race conditions in a large-scale, asynchronous distributed system; developed reproducible test cases to isolate root causes, translating ambiguous production failures into structured, tractable engineering problems.
     \end{itemize}
 
     \vspace{5pt}
@@ -115,28 +159,20 @@
         \item Rebuilt the SAS customer segmentation pipeline in Python, ensuring functional parity through systematic output validation at each transformation stage; reduced pipeline processing time by 43\% while establishing a QA layer that enabled the analytics team to audit segmentation decisions with explicit, reproducible logic rather than opaque SAS macros.
     \end{itemize}
 
-    %% PROJECTS %%
-    \vspace{10pt}
-    \noindent {\large \textcolor{headings}{\textbf{SELECTED PROJECTS}}} \\
-    \vspace{-7pt}
-    \hrule
+    % \vspace{5pt}
+    % \noindent {\normalsize \textbf{Parentlane}, India \(\vert\) Machine Learning Intern} \hfill 18 May 2020 -- 28 Jun 2020 (FT)
+    % \begin{itemize}[leftmargin=*]
+    %     \item Leveraged a pre-existing question-answer and article corpus along with transformer based article summarisation and similarity based question matching to develop automated content suggestion and answer retrieval for user queries.
+    % \end{itemize}
 
-    \vspace{5pt}
-    \noindent {\normalsize \textbf{FRAG: A Multi-modal Multi-agent Fashion Recommendation RAG Agent} \href{https://github.com/TheDansmod/fashion_mas}{demo \faExternalLink*}} \hfill Dec 2025 -- Mar 2026
-    \begin{itemize}[leftmargin=*]
-        \item Designed and built a LangGraph-orchestrated multi-agent agentic backend with a Self-RAG-inspired self-evaluation loop, recommending items from a 300k-item catalogue using combined text and image input, a compound AI system integrating foundation models, retrieval, and tool orchestration.
-        \item Built a custom MCP server on FastAPI backed by Qdrant vector DB, with Pydantic-based configuration management and a dependency injector architecture for testability; validated with a coverage-instrumented pytest suite; used Docker for the Qdrant containerisation, with a Chainlit conversational UI.
-        \item Implemented LangSmith-based production observability to continuously monitor retrieval quality, generation failures, and agent-loop latency, using this telemetry to diagnose and resolve failure modes prior to final evaluation, direct precedent for establishing agent evaluation frameworks.
-        \item Designed a 60-query adversarial evaluation dataset spanning style intents, cross-modal ambiguities, and catalogue edge cases; calibrated a G-Eval LLM-as-judge rubric with explicit per-dimension scoring criteria to guard against verbosity bias. Achieved 9.3/10 on this framework, demonstrating end-to-end capability in agent benchmarking and acceptance-criteria design.
-    \end{itemize}
-
-    \vspace{5pt}
-    \noindent {\normalsize\textbf{High-Throughput Engine for Exhaustive Game Solving (Tinyhouse Chess)}} \hfill Sep 2026 - present
-    \begin{itemize}[leftmargin=*]
-        \item Diagnosed a memory-mapped-file storage layer as a write-throughput bottleneck in a high-throughput search engine; designed and implemented a sharded log-structured merge (LSM) storage engine with an in-memory write buffer, sustaining required throughput within a constrained disk budget.
-        \item Benchmarked the custom LSM design against RocksDB, demonstrating higher sustained write throughput and lower disk-footprint overhead; direct evidence of database performance analysis and tuning at scale.
-        \item Applied property-based testing (Hypothesis) to systematically surface edge-case bugs in state-transition logic.
-    \end{itemize}
+    %% AWARDS %% - listing just a single one is not beneficial - either integrate it into other locations or remove it or add more
+    % \vspace{10pt}
+    % \noindent {\large \textcolor{headings}{\textbf{AWARDS}}} \\
+    % \vspace{-7pt}
+    % \hrule
+    % \vspace{5pt}
+    % \noindent {\normalsize \textbf{Queen Mary Global Talent Scholarship} \hfill 2024 \\
+    % Queen Mary University of London
 
     %% EDUCATION %%
     \vspace{10pt}
@@ -145,13 +181,11 @@
     \hrule
     \vspace{5pt}
     \noindent {\normalsize \textbf{Queen Mary University of London}}, London, UK \hfill 2024 -- 2026 \\
-    {\normalsize Master of Science in Artificial Intelligence $\vert$ Merit} \\
-    \textbf{Coursework}: Applied Statistics, Computational Creativity, core ML (supervised/unsupervised learning, classification)
+    {\normalsize Master of Science in Artificial Intelligence $\vert$ Merit}
 
     \vspace{5pt}
     \noindent {\normalsize \textbf{Birla Institute of Technology and Science}}, Pilani, India \hfill 2018 -- 2022 \\
-    {\normalsize Bachelor of Engineering in Computer Science $\vert$ First Division} \\
-    \textbf{Thesis}: \textit{Application of Actor-Critic Methods to Improving Video Quality Experience} (Advisor: Dr. Paresh Saxena). Pivoted from AR-A3C to PPO with advantage normalisation after diagnosing training instability as a high-variance policy-gradient issue rather than hyperparameter misconfiguration; outperformed the Pensieve baseline by approximately 30\% on QoE metrics.
+    {\normalsize Bachelor of Engineering in Computer Science $\vert$ First Division}
 
     %% MASTER'S THESIS %%
     \vspace{10pt}
@@ -162,14 +196,32 @@
     \noindent {\normalsize \textbf{Causal Discovery in the presence of Latent Confounders}} \hfill May 2025 -- Dec 2025 (QMUL) \\
     \textit{Advisor}: Dr. Anthony Constantinou \hfill \href{https://github.com/TheDansmod/qmul-msc-ai-code-master-thesis/blob/main/dissertation_report.pdf}{paper \faExternalLink*} $\vert$ \href{https://github.com/TheDansmod/qmul-msc-ai-code-master-thesis}{code \faExternalLink*}
     \begin{itemize}[leftmargin=*]
-        \item Contributed two novel mapping functions converting a discrete causal-discovery optimisation problem into a continuous one, solved using Deep Reinforcement Learning (PPO) and Evolutionary Strategies (CMA-ES) as black-box optimisers.
-        \item Designed a rigorous benchmarking protocol against state-of-the-art causal discovery algorithms across synthetic and real-world graphs with varying confounder densities, establishing the boundary conditions under which a 30\% computational reduction preserved structural accuracy, evidence of disciplined evaluation-framework design applicable to domain foundation model benchmarking.
+        \item Worked on discovering cause-effect relationships between variables when some variables are unobserved, common in real-world data.
+        \item Contributed two novel, fast mapping functions that helped convert discrete optimization problem into a continuous optimization one.
+        \item Used Deep Reinforcement Learning (PPO) and Evolutionary Strategies (CMA-ES) as black-box optimizers to solve the problem.
+        % \item Benchmarked against SOTA algorithms, achieving competitive accuracy while delivering a 30\% reduction in computational time. - rewrite for micro1
+        \item Designed a rigorous benchmarking protocol against SOTA causal discovery algorithms across synthetic and real-world graphs with varying confounder densities; validated that the 30\% computational reduction did not degrade structural accuracy beyond acceptable margins, establishing the conditions under which the proposed optimisation is and is not appropriate to apply.
+    \end{itemize}
+
+    %% BACHELOR'S THESIS %%
+    \vspace{10pt}
+    \noindent {\large \textcolor{headings}{\textbf{BACHELOR'S THESIS}}} \\
+    \vspace{-7pt}
+    \hrule
+    \vspace{5pt}
+    \noindent {\normalsize \textbf{Application of Actor-Critic Methods to Improving Video Quality Experience}} \hfill Jan 2022 -- May 2022 (BITS) \\
+    \textit{Advisor}: Dr. Paresh Saxena
+    \begin{itemize}[leftmargin=*]
+        \item Adaptive Bitrate (ABR) algorithms in streaming video players must balance bandwidth efficiency and user Quality of Experience (QoE).
+        \item Investigated whether Deep RL actor-critic methods could outperform the then state-of-the-art model (\href{https://dl.acm.org/doi/10.1145/3098822.3098843}{Pensieve}) for server-side ABR.
+        % \item Implemented AR-A3C. It proved unstable, so pivoted to PPO with optimisations like advantage normalisation and value function clipping. Outperformed Pensieve by approximately 30\% on QoE metrics, validating the approach.
+        \item Initially implemented AR-A3C; upon diagnosing training instability as arising from high-variance policy gradients in the streaming reward landscape rather than hyperparameter misconfiguration, made the principled decision to pivot to PPO with advantage normalisation and value function clipping. Outperformed Pensieve by approximately 30\% on QoE metrics, validating the approach.
     \end{itemize}
 
     \pagestyle{fancy}
     \fancyhf{}
     \renewcommand{\footrulewidth}{0pt}
     \renewcommand{\headrulewidth}{0pt}
-    \rfoot{\normalsize Date: \textit{24 Sep, 2026}}
+    % \rfoot{\normalsize Date: \textit{20 Mar, 2026}}
 
 \end{document}
