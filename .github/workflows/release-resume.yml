@@ -1,0 +1,130 @@
+# .github/workflows/release-resume.yml
+#
+# Compiles the résumé for every pushed commit that modifies it and publishes
+# one GitHub Release per such commit. Each release has the commit subject as its
+# title and the full commit message as its description.
+
+name: Build and release résumé
+
+on:
+  push:
+    branches: [main]            # adjust if your default branch differs
+    paths:
+      - 'resume.tex'            # must match TEX_FILE below
+  workflow_dispatch:            # manual trigger: releases the latest commit touching TEX_FILE
+
+permissions:
+  contents: write               # required to create tags and releases
+
+concurrency:
+  group: resume-release         # serialise runs so that releases are created in order
+  cancel-in-progress: false
+
+env:
+  TEX_FILE: resume.tex          # path to the .tex file, relative to the repository root
+  PDF_NAME: Danish_Shakeel_Mohammad_resume.pdf          # file name of the asset attached to each release
+  TEXLIVE_IMAGE: texlive/texlive:latest   # full TeX Live; pin e.g. texlive/texlive:TL2025-historic for reproducibility
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+
+    steps:
+      - name: Check out full history
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0        # the complete history is needed to enumerate commits in the push
+
+      - name: Determine commits to release
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          zero=0000000000000000000000000000000000000000
+
+          if [ "$GITHUB_EVENT_NAME" = "push" ] \
+             && [ -n "$BEFORE" ] && [ "$BEFORE" != "$zero" ] \
+             && git cat-file -e "${BEFORE}^{commit}" 2>/dev/null; then
+            # Ordinary push: every non-merge commit in BEFORE..AFTER that touches TEX_FILE,
+            # oldest first.
+            git rev-list --reverse --topo-order --no-merges \
+              "${BEFORE}..${AFTER}" -- "$TEX_FILE" > "$RUNNER_TEMP/commits.txt"
+          else
+            # New branch, force push with an unreachable BEFORE, or manual run:
+            # release only the most recent commit that touches TEX_FILE.
+            git rev-list -1 "$AFTER" -- "$TEX_FILE" > "$RUNNER_TEMP/commits.txt"
+          fi
+
+          echo "Commits selected for release:"
+          cat "$RUNNER_TEMP/commits.txt"
+
+      - name: Pull TeX Live image
+        run: |
+          if [ -s "$RUNNER_TEMP/commits.txt" ]; then
+            docker pull "$TEXLIVE_IMAGE"
+          fi
+
+      - name: Compile and publish one release per commit
+        run: |
+          set -euo pipefail
+          mapfile -t shas < "$RUNNER_TEMP/commits.txt"
+          n=${#shas[@]}
+          if [ "$n" -eq 0 ]; then
+            echo "No commit modifies $TEX_FILE; nothing to release."
+            exit 0
+          fi
+
+          texdir=$(dirname "$TEX_FILE")
+          base=$(basename "$TEX_FILE" .tex)
+          i=0
+
+          for sha in "${shas[@]}"; do
+            i=$((i + 1))
+            short=$(git rev-parse --short=7 "$sha")
+            epoch=$(git log -1 --format=%ct "$sha")                 # committer timestamp
+            stamp=$(date -u -d "@$epoch" +%Y%m%d-%H%M%S)
+            tag="resume-${stamp}-${short}"
+
+            if gh release view "$tag" >/dev/null 2>&1; then
+              echo "Release $tag already exists; skipping."
+              continue
+            fi
+
+            # Materialise the exact tree of this commit in a separate worktree.
+            wt="$RUNNER_TEMP/wt-$short"
+            git worktree add --detach "$wt" "$sha"
+
+            # Compile inside TeX Live. SOURCE_DATE_EPOCH + FORCE_SOURCE_DATE make \today
+            # (and the PDF metadata dates) equal to the commit date, not the build date.
+            docker run --rm \
+              --user "$(id -u):$(id -g)" \
+              -e HOME=/tmp \
+              -e SOURCE_DATE_EPOCH="$epoch" \
+              -e FORCE_SOURCE_DATE=1 \
+              -v "$wt:/work" \
+              -w "/work/$texdir" \
+              "$TEXLIVE_IMAGE" \
+              latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error "$base.tex"
+
+            out="$RUNNER_TEMP/out-$short"
+            mkdir -p "$out"
+            cp "$wt/$texdir/$base.pdf" "$out/$PDF_NAME"
+
+            title=$(git log -1 --format=%s "$sha")                  # subject line
+            git log -1 --format=%B "$sha" > "$out/notes.md"         # full message
+
+            latest=false
+            if [ "$i" -eq "$n" ]; then latest=true; fi
+
+            gh release create "$tag" "$out/$PDF_NAME" \
+              --target "$sha" \
+              --title "$title" \
+              --notes-file "$out/notes.md" \
+              --latest="$latest"
+
+            git worktree remove --force "$wt"
+          done
