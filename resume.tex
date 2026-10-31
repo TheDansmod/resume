@@ -57,26 +57,26 @@
 
 \begin{document}
     %% HEADER %%
-    \begin{center}
-        \Huge
-        D\textsc{anish} S\textsc{hakeel} M\textsc{ohammad} \\
-    \end{center}
-    % \vspace{-14pt}
-    \begin{center}
-        % \small
-        \seticon{faEnvelope} mohammadsdanish@gmail.com \hspace{0.5em} $\vert$ \hspace{0.5em}
-        \seticon{faPhone} (+44) 78237-81284 \hspace{0.5em} $\vert$ \hspace{0.5em}
-        \seticon{faGithub} \href{https://github.com/TheDansmod}{github.com/TheDansmod} \\ % $\vert$
-        \seticon{faLinkedin} \href{https://www.linkedin.com/in/danish-mohammad/}{www.linkedin.com/in/danish-mohammad/} \hspace{0.5em} $\vert$ \hspace{0.5em}
-        \seticon{faHome} Waterloo Gardens, London, E2 9HU \\
-        Full UK work authorization (Graduate visa) until April 2028. Indian Citizen. \\
-        \vspace{0.5em}
-        \noindent\fbox{%
-            \parbox{0.9\textwidth}{%
-                AI/ML engineer with an MSc in Artificial Intelligence (Queen Mary University of London, Merit, March 2026) and two years of production software experience at Cisco Systems integrating machine-learned outputs into large-scale industrial platforms. Demonstrated capability in generative AI and agentic system design, evidenced by a multi-agent retrieval-augmented generation (RAG) architecture combining a self-evaluation loop with production-grade observability. Strong quantitative foundation in linear algebra, probability, and applied statistics, applied to deep reinforcement learning, causal discovery, and combinatorial optimisation. Proficient in Python and PyTorch, with direct experience extending deep learning to text analytics/NLP (transformer-based summarisation and semantic matching) and computer vision (CNN-based policy learning). Seeking to apply this algorithm-development and generative-AI foundation to open-ended research problems involving complex, large-scale data.
-            }%
+    \noindent
+    \begin{minipage}{0.37\textwidth}
+        {
+            \huge
+            D\textsc{anish} S\textsc{hakeel} M\textsc{ohammad}
         }
-    \end{center}
+        \vspace{1em}
+
+        \seticon{faEnvelope} mohammadsdanish@gmail.com \\
+        \seticon{faPhone} (+91) 95520-11998 \\
+        \seticon{faGithub} \href{https://github.com/TheDansmod}{github.com/TheDansmod} \\
+        \seticon{faLinkedin} \href{https://www.linkedin.com/in/danish-mohammad/}{www.linkedin.com/in/danish-mohammad/} \\
+        \seticon{faHome} Pune, Maharashtra, India \\
+        Open to relocation. Available immediately.
+    \end{minipage}
+    \fbox{
+        \begin{minipage}{0.58\textwidth}
+            Applied AI / software engineer with 2+ years of production engineering experience at Cisco and an MSc in Artificial Intelligence. Builds end-to-end GenAI applications: multimodal RAG over a 260k-item retail product catalogue, LangGraph multi-agent workflows with planning, tool use, self-critique loops and persistent memory, custom MCP servers, and vector search on Qdrant. Ships them on AWS (Bedrock, S3, DynamoDB, Cognito, CloudFormation) with typed configuration, tests, tracing and LLM-as-a-judge evaluation. Earlier work spans Java REST APIs for an enterprise ML-driven network platform and a marketing-analytics data pipeline.
+        \end{minipage}
+    }
 
     %% TECHNICAL SKILLS %%
     \vspace{10pt}
@@ -87,12 +87,60 @@
     \noindent 
     \hspace{-5pt}
     \begin{tabular}{l p{16.5cm}}
-        \textbf{Gen AI / Agentic} & Retrieval-Augmented Generation (RAG), Self-RAG-style self-evaluation, LangGraph, LangChain, Model Context Protocol (MCP), Qdrant vector database, LLM-as-a-judge evaluation (G-Eval), LangSmith observability, Chainlit, Ollama \\
-        \textbf{ML / DL} & PyTorch, Convolutional Neural Networks, Deep Reinforcement Learning (DDQN, Rainbow, PPO), Evolutionary Strategies (CMA-ES), reward shaping, causal discovery, combinatorial and continuous optimisation \\
-        \textbf{Math \& Stats} & Applied statistics, probability, linear algebra, benchmarking and comparative evaluation design \\
-        \textbf{Prog \& Systems} & Python, Java, Git, Docker, Unix, NumPy, pandas, scikit-learn, Jupyter, Hydra, FastAPI, Pydantic, property-based testing (Hypothesis) \\
-        \textbf{Research \& Eval} & Adversarial evaluation dataset design, annotation schema design, root cause analysis, quality calibration, statistical benchmarking protocols \\
+        \textbf{Gen AI / Agentic} & LangGraph (stateful multi-agent graphs, human-in-the-loop interrupts, checkpointing), LangChain, MCP (FastMCP, streamable HTTP), tool calling, structured outputs (Pydantic), Self-RAG-style critique loops, LLM-as-a-judge evaluation, LangSmith tracing, prompt engineering \\
+        \textbf{Retrieval \& Data} & RAG, multimodal embeddings (Amazon Nova Multimodal Embeddings, Marqo-FashionSigLIP), Qdrant (named vectors, HNSW, payload filtering, snapshots), semantic search, Parquet/PyArrow, pandas, NumPy, HDF5, SQL, SQLite, PostgreSQL \\
+        \textbf{Cloud (AWS)} & Bedrock (Claude, Nova; on-demand and batch inference), S3, DynamoDB, Cognito (OAuth/SSO), IAM, CloudFormation (nested stacks), EC2, boto3 \\
+        \textbf{Full-Stack} & Python, Java, REST API design, FastAPI, Chainlit, asyncio, Pydantic / pydantic-settings, dependency-injector, Docker / Podman Compose \\
+        \textbf{ML} & PyTorch, scikit-learn, reinforcement learning (PPO, DDQN, A3C), evolutionary strategies (CMA-ES), causal discovery, Numba \\
+        \textbf{Engr Practice} & pytest (mocks, async, coverage), Ruff, structured logging (loguru, JSON logs), Git / Gitflow, Jira, uv \\
     \end{tabular}
+
+    %% PROJECTS %%
+    \vspace{10pt}
+    \noindent {\large \textcolor{headings}{\textbf{PROJECTS}}} \\
+    \vspace{-7pt}
+    \hrule
+
+    \vspace{5pt}
+    \noindent {\normalsize \textbf{FRAG: Multimodal Multi-Agent RAG Assistant for a Retail Product Catalogue} \href{https://github.com/TheDansmod/fashion_mas}{demo \faExternalLink*}} \hfill Dec 2025 -- Mar 2026
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Agentic workflow}: Designed a LangGraph state machine with 8 specialised nodes (human-in-the-loop input, request quantifier, intent planner, vision analyser, item-description generator, tool-using retrieval agent, critic, explainer) and conditional routing. The text and image path is skipped for text-only queries, and a Self-RAG-style critic sends structured corrections back to generation for up to N bounded retries. Every LLM call is held to a Pydantic output schema.
+        \item \textbf{Multimodal retrieval}: Built text-to-image semantic search over the 260k-item FashionGen catalogue using named image and text vectors in Qdrant (on-disk HNSW and payload, category-filtered queries). Migrated embeddings from a GPU-hosted Marqo-FashionSigLIP model to managed Amazon Nova Multimodal Embeddings on Bedrock so the pipeline could run in the cloud.
+        \item \textbf{Data pipeline}: Restructured a 14 GB HDF5 dataset into an S3-native layout: 260k images sharded under S3 prefixes by parallel extract-and-upload workers, plus item metadata as zstd-compressed Parquet loaded into an in-memory lookup. Wrote a resumable embedding and upsert job (point ID = dataset index) and generated JSONL inputs for Bedrock batch inference.
+        \item \textbf{MCP tool server}: Exposed the catalogue as LLM tools (semantic search, category listing, item lookup returning text plus image content) through a custom FastMCP server over streamable HTTP. A pluggable tools-client interface switches by config between remote MCP tools and in-process tools, so the agent can be tested without the server.
+        \item \textbf{Production readiness}: Built a Chainlit chat UI that streams per-node progress in real time, with AWS Cognito OAuth sign-in and chat history persisted to DynamoDB and S3. Added a swappable LangGraph checkpointer layer (SQLite, Postgres, DynamoDB with TTL, compression and adaptive retries) for multi-turn session resume. Wrote a provider-agnostic model factory (Bedrock, Mistral, Gemini, Ollama) with client-side rate limiting. Everything is wired through a dependency-injection container with typed Pydantic config, structured JSON logs, LangSmith tracing and per-session token-cost tracking. Persistence resources are defined as CloudFormation nested stacks.
+        \item \textbf{Evaluation and testing}: Curated a 60-query evaluation set (50 image+text, 10 text-only) across 5 request types: complementary pairing, style variation, body-type fit, aesthetic-from-image and free-text. Built a rubric-based LLM-as-a-judge pipeline that scores visual grounding, per-item suitability and request coverage with weighted aggregation: 9.1 ± 0.3/10. Added an async integration test that runs the full graph with mocked LLMs and agents, with coverage reporting.
+    \end{itemize}
+
+    \vspace{5pt}
+    \noindent {\normalsize\textbf{High-Throughput Engine for Exhaustive Game Solving (Tinyhouse Chess)}} \hfill Sep 2026 - present
+    \begin{itemize}[leftmargin=*]
+        \item Building a solver that resolves the full game by breadth-first search over the reachable state space, followed by retrograde (backward-induction) analysis from terminal positions.
+        \item Reached 20M plies/second in the core loop using bitboard state representation and Numba JIT-compiled kernels, keeping Python for orchestration and I/O.
+        \item Found memory-mapped files to be the write bottleneck for the visited-state table. Designed a sharded LSM-tree storage engine (in-memory write buffer, streaming mmap-based compaction) that sustains the required write throughput within a fixed disk budget.
+        \item Benchmarked it against RocksDB, whose per-key overhead (block indices, bloom filters, compression metadata) gave lower write throughput and exceeded the disk budget. This justified a workload-specific engine built around fixed-width bitboard keys.
+    \end{itemize}
+
+    %% WORK EXPERIENCE %%
+    \vspace{10pt}
+    \noindent {\large \textcolor{headings}{\textbf{WORK EXPERIENCE}}} \\
+    \vspace{-7pt}
+    \hrule
+    \vspace{5pt}
+    \noindent {\normalsize \textbf{Cisco Systems}, India \(\vert\) Software Engineer} \hfill 10 Aug 2022 -- 12 Sep 2024 (FT)
+    \begin{itemize}[leftmargin=*]
+        \item Designed and maintained Java RESTful CRUD APIs and their database layer for endpoint-identity records produced by a cloud-hosted ML clustering microservice that classifies devices.
+        \item Contributed to Cisco AI Endpoint Analytics (ISE 3.3) by integrating automated profiling-rule proposals from Cisco's managed ML engine into production policy-enforcement workflows. This took ML output to production inside an enterprise product.
+        \item Root-caused 80+ critical production defects across ISE 3.3–3.5, including database-consistency anomalies and concurrent-session race conditions in a large asynchronous distributed system. Built reproducible test cases that turned ambiguous field failures into tractable fixes.
+        \item Worked with QA, TAC/escalation and product teams across geographies to triage customer-reported issues and validate fixes.
+    \end{itemize}
+
+    \vspace{5pt}
+    \noindent {\normalsize \textbf{Epsilon Data Management}, India \(\vert\) Analyst Intern} \hfill 08 Jun 2021 -- 09 Aug 2021 (FT)
+    \begin{itemize}[leftmargin=*]
+        \item The data team relied on proprietary SAS code for customer segmentation followed by manual modification in Excel, which was slow and inaccessible to Python-based workflows. Tasked with rebuilding this pipeline in Python during a 2-month internship.
+        \item Rebuilt the SAS customer segmentation pipeline in Python, ensuring functional parity through systematic output validation at each transformation stage; reduced pipeline processing time by 43\% while establishing a QA layer that enabled the analytics team to audit segmentation decisions with explicit, reproducible logic rather than opaque SAS macros.
+    \end{itemize}
 
     %% EDUCATION %%
     \vspace{10pt}
@@ -108,65 +156,6 @@
     \noindent {\normalsize \textbf{Birla Institute of Technology and Science}}, Pilani, India \hfill Aug 2018 -- Aug 2022 \\
     {\normalsize Bachelor of Engineering in Computer Science $\vert$ First Division} \\
     \textbf{Thesis}: \textit{Application of Actor-Critic Methods to Improving Video Quality Experience} (Advisor: Dr. Paresh Saxena). Investigated whether deep RL actor-critic methods could outperform the then state-of-the-art server-side adaptive bitrate algorithm (Pensieve). Pivoted from AR-A3C to PPO with advantage normalisation after diagnosing training instability as a high-variance policy-gradient issue rather than hyperparameter misconfiguration; outperformed the Pensieve baseline by approximately 30\% on QoE metrics.
-
-    %% PROJECTS %%
-    \vspace{10pt}
-    \noindent {\large \textcolor{headings}{\textbf{PROJECTS}}} \\
-    \vspace{-7pt}
-    \hrule
-
-    \vspace{5pt}
-    \noindent {\normalsize \textbf{FRAG: A Multi-modal Multi-agent Fashion Recommendation RAG Agent} \href{https://github.com/TheDansmod/fashion_mas}{demo \faExternalLink*}} \hfill Dec 2025 -- Mar 2026
-    \begin{itemize}[leftmargin=*]
-        \item Designed and built an agentic backend: a LangGraph-orchestrated multi-agent system with a Self-RAG-inspired self-evaluation loop, recommending items from a 300,000-item catalogue from combined text and image input.
-        \item Built a custom MCP server on FastAPI backed by a Qdrant vector database (containerised with Docker), with Pydantic-based configuration management and dependency-injected architecture validated by a pytest suite with coverage tracking; with a Chainlit conversational front end and persistent SQLite chat history.
-        \item Implemented LangSmith-based production observability to track retrieval quality, generation failures, and agent-loop latency, using this telemetry to diagnose and close failure modes in the self-evaluation loop.
-        \item Designed a 60-query adversarial evaluation set spanning cross-modal ambiguity and catalogue edge cases, and calibrated a G-Eval LLM-as-a-judge rubric (relevance, style coherence, diversity) resistant to length/verbosity bias; the system scored 9.3/10 under this framework.
-    \end{itemize}
-
-    \vspace{5pt}
-    \noindent {\normalsize \textbf{Sudoku Puzzle Generation with Deep Reinforcement Learning}} \hfill Feb 2025 -- Apr 2025 \\
-    \textit{Course}: Computational Creativity (Prof. Simon Colton)
-    \begin{itemize}[leftmargin=*]
-        \item Applied deep RL (DDQN, Rainbow) with convolutional neural networks (CNN) as function approximators to autonomously generate valid Sudoku puzzles of increasing difficulty, a combinatorial problem with no established RL benchmark.
-        \item Addressed sparse-reward failure via potential-based reward shaping combined with a puzzle-specific difficulty rater.
-        \item Designed a difficulty-evaluation rubric as a proxy reward signal and validated that generated puzzles achieved a difficulty score 67\% above a random baseline, confirming the policy learned genuine difficulty-shaping behaviour rather than a degenerate blank-maximising strategy.
-    \end{itemize}
-
-    \vspace{5pt}
-    \noindent {\normalsize\textbf{High-Throughput Engine for Exhaustive Game Solving (Tinyhouse Chess)}} \hfill Sep 2026 - present
-    \begin{itemize}[leftmargin=*]
-        \item Designed a game-solving engine performing exhaustive breadth-first search over a large state space, achieving 20 million plies/second via bitboard representation and Numba JIT-compiled kernels.
-        \item Diagnosed a memory-mapped-file storage layer as a write-throughput bottleneck and designed a sharded log-structured merge (LSM) engine with an in-memory write buffer, sustaining required throughput within a constrained disk budget; benchmarked favourably against RocksDB on sustained write throughput and disk footprint.
-        \item Applied property-based testing (Hypothesis) to surface edge-case bugs in state-transition logic.
-    \end{itemize}
-
-    %% WORK EXPERIENCE %%
-    \vspace{10pt}
-    \noindent {\large \textcolor{headings}{\textbf{WORK EXPERIENCE}}} \\
-    \vspace{-7pt}
-    \hrule
-    \vspace{5pt}
-    \noindent {\normalsize \textbf{Cisco Systems}, India \(\vert\) Software Engineer} \hfill 10 Aug 2022 -- 12 Sep 2024 (FT)
-    \begin{itemize}[leftmargin=*]
-        \item Software engineer on Cisco's Identity Services Engine (ISE), a network access control and policy-enforcement platform deployed by over 10,000 organisations globally.
-        \item Designed and maintained Java-based RESTful CRUD APIs backed by an Oracle database and Redis cache for endpoint identity records ingested from a cloud-hosted ML classification service, implementing the read/write API layer to meet production latency requirements.
-        \item Integrated automated profiling-rule proposals from Cisco's managed ML engine into policy-enforcement workflows as part of Cisco AI Endpoint Analytics (ISE 3.3), directly experiencing the integration of ML outputs into robust, scalable industrial software.
-        \item Conducted systematic failure analysis across 80+ critical production bugs spanning database consistency anomalies and concurrent session race conditions in a large-scale asynchronous distributed system, developing reproducible test cases to isolate root causes.
-    \end{itemize}
-
-    \vspace{5pt}
-    \noindent {\normalsize \textbf{Epsilon Data Management}, India \(\vert\) Analyst Intern} \hfill 08 Jun 2021 -- 09 Aug 2021 (FT)
-    \begin{itemize}[leftmargin=*]
-        \item The data team relied on proprietary SAS code for customer segmentation followed by manual modification in Excel, which was slow and inaccessible to Python-based workflows. Tasked with rebuilding this pipeline in Python during a 2-month internship.
-        \item Rebuilt the SAS customer segmentation pipeline in Python, ensuring functional parity through systematic output validation at each transformation stage; reduced pipeline processing time by 43\% while establishing a QA layer that enabled the analytics team to audit segmentation decisions with explicit, reproducible logic rather than opaque SAS macros.
-    \end{itemize}
-
-    \vspace{5pt}
-    \noindent {\normalsize \textbf{Parentlane}, India \(\vert\) Machine Learning Intern} \hfill 18 May 2020 -- 28 Jun 2020 (FT)
-    \begin{itemize}[leftmargin=*]
-        \item Applied transformer-based article summarisation and similarity-based question matching over a question-answer and article corpus to build automated content suggestion and answer retrieval for user queries, a direct application of NLP/text analytics techniques.
-    \end{itemize}
 
     %% MASTER'S THESIS %%
     \vspace{10pt}
