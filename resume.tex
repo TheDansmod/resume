@@ -52,9 +52,6 @@
 \titlespacing{\section}{0pt}{*0}{*0}
 \titlespacing{\subsection}{0pt}{*0}{*0}
 
-% to keep section headings together with their first entry
-\usepackage{needspace}
-
 % to not have numbering
 \pagestyle{empty}
 
@@ -78,7 +75,7 @@
         \vspace{0.5em}
         \noindent\fbox{%
             \parbox{0.9\textwidth}{%
-                Applied AI engineer with an MSc in Artificial Intelligence (Merit, Queen Mary University of London) and 2+ years of software engineering at Cisco. Designs, evaluates and ships LLM-powered systems in Python: agentic AI workflows, retrieval-augmented generation (RAG) over embeddings and vector databases, and structured model evaluation and benchmarking. Research background in statistical modelling and experiment design through a master's thesis in causal discovery.
+                AI engineer with 2+ years of production software engineering at Cisco and an MSc in Artificial Intelligence (Merit, Queen Mary University of London). Designs, builds and deploys end-to-end generative AI and agentic AI solutions on AWS, including a multimodal retrieval-augmented generation (RAG) product recommendation assistant for a retail catalogue, backed by automated testing, monitoring and evaluation. Earlier work: Python customer segmentation and ML-driven enterprise products.
             }%
         }
     \end{center}
@@ -92,12 +89,12 @@
     \noindent
     \hspace{-5pt}
     \begin{tabular}{l p{16.5cm}}
-        \textbf{LLM / Agentic} & LangGraph (multi-step agent graphs, conditional routing, human-in-the-loop, checkpointing), LangChain, RAG, prompt engineering, tool calling, MCP (FastMCP), structured outputs (Pydantic), Self-RAG-style critique loops \\
-        \textbf{Retrieval} & Semantic search, text and multimodal embeddings (Amazon Nova, Marqo-FashionSigLIP), vector databases (Qdrant: named vectors, HNSW indexing, metadata/payload filtering) \\
-        \textbf{Evaluation} & LLM-as-a-judge (weighted rubrics), benchmark and test-set design, multi-seed ablation studies, baseline comparison, LangSmith tracing \\
-        \textbf{Stats \& ML} & Applied statistics, maximum-likelihood estimation, BIC model selection, structural causal models, PyTorch, scikit-learn, reinforcement learning (PPO, A3C), CMA-ES \\
-        \textbf{Data Analysis} & Python, pandas, NumPy, SQL, PostgreSQL, SQLite, Parquet/PyArrow, HDF5, Numba \\
-        \textbf{Cloud \& Engr} & AWS (Bedrock on-demand and batch inference, S3, DynamoDB), FastAPI, Docker, pytest, Git, Java, REST APIs \\
+        \textbf{Gen AI / Agentic} & LangGraph (multi-agent workflows, human-in-the-loop, checkpointing), LangChain, RAG, prompt engineering, tool calling, MCP (FastMCP), structured outputs (Pydantic), multi-turn session state, Self-RAG-style critique loops, LLM-as-a-judge evaluation, LangSmith \\
+        \textbf{LLMs \& Models} & Claude and Amazon Nova (AWS Bedrock; on-demand and batch inference), Gemini, Mistral, Ollama; multimodal embeddings (Amazon Nova, Marqo-FashionSigLIP) \\
+        \textbf{Retrieval \& Data} & Vector databases (Qdrant: named vectors, HNSW, payload filtering), semantic search, SQL, PostgreSQL, SQLite, Parquet/PyArrow, pandas, NumPy \\
+        \textbf{Backend \& Cloud} & Python (object-oriented design, asyncio, packaging with uv), Java, FastAPI, REST API design, AWS (Bedrock, S3, DynamoDB, Cognito, IAM, CloudFormation, EC2, boto3), Docker/Podman Compose, Chainlit \\
+        \textbf{Machine Learning} & PyTorch, scikit-learn, model training and evaluation, reinforcement learning (PPO, A3C), CMA-ES, causal discovery, applied statistics, Numba \\
+        \textbf{Engr Practice} & Git/Gitflow, automated testing with pytest (mocks, async, coverage), Ruff, tracing and monitoring (LangSmith), structured logging (loguru), dependency injection, typed configuration (pydantic-settings), Jira \\
     \end{tabular}
 
     %% PROJECTS %%
@@ -107,43 +104,27 @@
     \hrule
 
     \vspace{5pt}
-    \noindent {\normalsize \textbf{FRAG: Multimodal Multi-Agent RAG Assistant for Fashion Recommendation over a Retail Product Catalogue} \hfill Dec 2025 -- Mar 2026 \\
-    \textit{Stack}: Python, LangGraph, AWS Bedrock (Claude, Nova), Qdrant, FastMCP, LangSmith, Chainlit \hfill \href{https://github.com/TheDansmod/fashion_mas}{demo \faExternalLink*}
+    \noindent {\normalsize \textbf{FRAG: Multimodal Multi-Agent RAG Assistant for Fashion Product Recommendation (Retail Catalogue)}} \hfill Dec 2025 -- Mar 2026 \\
+    \textit{Stack}: LangGraph, AWS Bedrock (Claude, Nova), Qdrant, FastMCP, Chainlit, DynamoDB, S3, Cognito, CloudFormation \hfill \href{https://github.com/TheDansmod/fashion_mas}{demo \faExternalLink*}
     \begin{itemize}[leftmargin=*]
-        \item \textbf{Agentic reasoning workflow}: Designed a multi-step workflow as an 8-node LangGraph state machine (intent planner, vision analyser, tool-using retrieval agent, critic, explainer and others), with conditional routing that skips the vision path for text-only queries. A Self-RAG-style critic returns structured corrections for bounded retries, and every LLM call is constrained to a Pydantic output schema.
-        \item \textbf{Retrieval strategy}: Built semantic search over the 260k-item FashionGen catalogue in the Qdrant vector database, combining embedding similarity (named image and text vectors, on-disk HNSW) with structured category filtering. Migrated embeddings from a GPU-hosted Marqo-FashionSigLIP model to Amazon Nova Multimodal Embeddings on Bedrock, removing the GPU dependency.
-        \item \textbf{Evaluation}: Designed a weighted, rubric-based LLM-as-a-judge evaluation (visual grounding, per-item suitability, request coverage) over a curated 60-query test set spanning 5 request types; the system scored 9.1 ± 0.3/10. Added an end-to-end integration test of the full graph with mocked LLMs.
-        \item \textbf{Tool use}: Exposed the catalogue to the agent as LLM tools (semantic search, category listing, multimodal item lookup) through a custom FastMCP server, behind a config-switchable client so the agent can be tested in isolation.
-        \item \textbf{Data pipeline}: Converted a 14 GB HDF5 dataset into an S3-native layout (sharded images; metadata as zstd-compressed Parquet) and wrote a resumable, idempotent embedding-and-upsert job, plus JSONL inputs for Bedrock batch inference.
-        \item \textbf{Deployment}: Shipped a chat UI with per-node progress streaming, multi-turn session persistence (LangGraph checkpointers on SQLite, Postgres, DynamoDB), a provider-agnostic model factory (Bedrock, Mistral, Gemini, Ollama), LangSmith tracing and per-session token-cost tracking.
+        \item \textbf{Problem}: Built an end-to-end shopping assistant that turns a customer's text request or outfit photo into grounded, explained product recommendations from a 260k-item retail fashion catalogue.
+        \item \textbf{Agentic workflow}: Designed an 8-node LangGraph multi-step reasoning pipeline (intent planner, vision analyser, tool-using retrieval agent, critic, explainer and others) with conditional routing that bypasses the vision path for text-only queries. A Self-RAG-style critic acts as a quality-control step, returning structured corrections for bounded retries; every LLM call is constrained to a Pydantic output schema.
+        \item \textbf{Multimodal RAG}: Built text-to-image semantic search on the Qdrant vector database (named image and text vectors, on-disk HNSW, category-filtered queries). Migrated embeddings from a GPU-hosted Marqo-FashionSigLIP model to Amazon Nova Multimodal Embeddings on Bedrock, removing the GPU dependency for cloud deployment.
+        \item \textbf{Deployment}: Shipped a Chainlit web UI with real-time progress streaming, Cognito OAuth sign-in and chat history in DynamoDB and S3. Added swappable checkpointers (SQLite, Postgres, DynamoDB with TTL) for multi-turn session resume, a provider-agnostic model factory (Bedrock, Mistral, Gemini, Ollama) with client-side rate limiting, and CloudFormation nested stacks for persistence resources.
+        \item \textbf{Evaluation and testing}: Scored 9.1 $\pm$ 0.3/10 on a weighted, rubric-based LLM-as-a-judge pipeline (visual grounding, per-item suitability, request coverage) over a curated 60-query set spanning 5 request types. Added an async end-to-end integration test of the full graph with mocked LLMs and coverage reporting.
+        \item \textbf{Tool integration}: Exposed catalogue data to the agent as LLM tools (semantic search, category listing, multimodal item lookup) through a custom FastMCP server over streamable HTTP, behind a config-switchable client interface that allows the agent to be tested without the server.
+        \item \textbf{Monitoring and maintainability}: Wired all components through a dependency-injection container with typed Pydantic configuration, structured JSON logging, LangSmith tracing and per-session token-cost tracking.
+        \item \textbf{Data pipeline}: Converted a 14 GB HDF5 dataset into an S3-native layout (sharded parallel image upload, zstd-compressed Parquet metadata) and wrote a resumable, idempotent embedding-and-upsert job, plus JSONL inputs for Bedrock batch inference.
     \end{itemize}
 
     \vspace{5pt}
-    \noindent {\normalsize\textbf{High-Throughput Engine for Exhaustive Game Solving (Tinyhouse Chess)}} \hfill Sep 2026 - present
+    \noindent {\normalsize\textbf{High-Throughput Engine for Exhaustive Game Solving (Tinyhouse Chess)}} \hfill Sep 2026 -- present
     \begin{itemize}[leftmargin=*]
-        \item Building a solver that resolves the full game by breadth-first search over the reachable state space followed by retrograde (backward-induction) analysis; reached 20M plies/second in Python through bitboard state representation and Numba JIT-compiled kernels.
-        \item Profiled memory-mapped files as the write bottleneck and designed a sharded LSM-tree storage engine; benchmarked it against RocksDB, which gave lower write throughput and exceeded the fixed disk budget.
-    \end{itemize}
-
-    %% MASTER'S THESIS %%
-    \Needspace{8\baselineskip}
-    \vspace{10pt}
-    \noindent {\large \textcolor{headings}{\textbf{MASTER'S THESIS}}} \\
-    \vspace{-7pt}
-    \hrule
-    \vspace{5pt}
-    \noindent {\normalsize \textbf{Causal Discovery in the presence of Latent Confounders}} \hfill May 2025 -- Dec 2025 (QMUL) \\
-    \textit{Advisor}: Dr. Anthony Constantinou \hfill \href{https://github.com/TheDansmod/qmul-msc-ai-code-master-thesis/blob/main/dissertation_report.pdf}{dissertation \faExternalLink*} $\vert$ \href{https://github.com/TheDansmod/qmul-msc-ai-code-master-thesis}{code \faExternalLink*}
-    \begin{itemize}[leftmargin=*]
-        \item \textbf{Modelling}: Recast score-based structure learning over ancestral and bow-free acyclic directed mixed graphs (ADMGs), for linear Gaussian structural causal models with latent confounders, as unconstrained continuous optimisation with no acyclicity penalty.
-        \item \textbf{Theory}: Constructed two maps from Euclidean space onto the bow-free and ancestral ADMG classes, computable in \(O(d^2)\) and \(O(d^{2.8})\) time, and proved surjectivity, invariance under positive scaling, and that every open neighbourhood of the origin attains the entire class.
-        \item \textbf{Statistical model selection}: Minimised the BIC (maximum-likelihood fits via RICF) with two black-box optimisers: PPO in a one-step environment with cyclically annealed entropy regularisation, and CMA-ES with a margin-maximising regulariser bounded so as to preserve the BIC ordering.
-        \item \textbf{Benchmarking}: On the real-world Sachs protein-signalling dataset, the CMA-ES variant achieved the lowest SHD (22 vs. 53), the highest PAG-skeleton \(F_{1}\) (0.58 vs. 0.47) and the shortest runtime (106 s vs. 250 s) against \href{https://arxiv.org/abs/2010.06978}{DCD} and \href{https://proceedings.mlr.press/v52/ogarrio16.html}{GFCI}; across synthetic experiments varying graph size, sample size, density and directed-edge fraction, it matched or exceeded DCD.
-        \item \textbf{Performance}: Accelerated the RICF estimator 2.7--54\(\times\) over the \href{https://ananke.readthedocs.io/en/latest/}{ananke-causal} reference implementation on 5--30-node graphs through Numba JIT compilation and precomputed covariance.
+        \item Building a solver that resolves the full game by breadth-first search over the reachable state space followed by retrograde (backward-induction) analysis; reached 20M plies/second using bitboards and Numba JIT-compiled kernels, with Python for orchestration and I/O.
+        \item Diagnosed memory-mapped writes as the bottleneck and designed a sharded LSM-tree storage engine that meets the required write throughput within a fixed disk budget, after benchmarking showed RocksDB's per-key overhead to be too costly for this workload.
     \end{itemize}
 
     %% WORK EXPERIENCE %%
-    \Needspace{8\baselineskip}
     \vspace{10pt}
     \noindent {\large \textcolor{headings}{\textbf{WORK EXPERIENCE}}} \\
     \vspace{-7pt}
@@ -153,19 +134,19 @@
     \textit{Identity Services Engine (ISE)}: Cisco's enterprise network access control and policy platform.
     \begin{itemize}[leftmargin=*]
         \item Integrated automated profiling-rule proposals from Cisco's managed ML engine into production policy-enforcement workflows for Cisco AI Endpoint Analytics (ISE 3.3), bringing ML output into a shipped enterprise product.
-        \item Designed and maintained Java REST APIs and the database layer for endpoint-identity records generated by a cloud-hosted ML clustering service that classifies network devices.
-        \item Root-caused 80+ critical production defects across ISE 3.3–3.5, including database-consistency anomalies and concurrent-session race conditions in a large asynchronous distributed system, converting ambiguous field failures into reproducible test cases and tractable fixes.
+        \item Designed and maintained Java REST CRUD APIs and the database layer for endpoint-identity records generated by a cloud-hosted ML clustering service that classifies network devices.
+        \item Root-caused 80+ critical production defects across ISE 3.3--3.5, including database-consistency anomalies and concurrent-session race conditions in a large asynchronous distributed system, converting ambiguous field failures into reproducible test cases and tractable fixes.
         \item Partnered with QA, TAC escalation and product teams across geographies to triage customer-reported issues and validate fixes.
     \end{itemize}
 
     \vspace{5pt}
     \noindent {\normalsize \textbf{Epsilon Data Management}, India \(\vert\) Analyst Intern} \hfill 08 Jun 2021 -- 09 Aug 2021
     \begin{itemize}[leftmargin=*]
-        \item Rebuilt a proprietary SAS-and-Excel customer segmentation pipeline in Python, validating output parity at each transformation stage; reduced processing time by 43\% and gave the analytics team explicit, reproducible and auditable segmentation logic.
+        \item Rebuilt the data team's customer segmentation pipeline, previously proprietary SAS code followed by manual Excel edits, in Python, ensuring functional parity through systematic output validation at each transformation stage.
+        \item Reduced pipeline processing time by 43\% and added a QA layer that let the analytics team audit segmentation decisions through explicit, reproducible logic rather than opaque SAS macros.
     \end{itemize}
 
     %% EDUCATION %%
-    \Needspace{6\baselineskip}
     \vspace{10pt}
     \noindent {\large \textcolor{headings}{\textbf{EDUCATION}}} \\
     \vspace{-7pt}
@@ -173,12 +154,19 @@
     \vspace{5pt}
     \noindent {\normalsize \textbf{Queen Mary University of London}}, London, UK \hfill Oct 2024 -- Mar 2026 \\
     {\normalsize Master of Science in Artificial Intelligence $\vert$ Merit} \\
-    \textbf{Courses}: Applied Statistics, Artificial Intelligence, Computational Creativity
+    \textbf{Courses}: Applied Statistics, Artificial Intelligence, Computational Creativity \\
+    \textbf{Thesis}: \textit{Causal Discovery in the presence of Latent Confounders} (Advisor: Dr. Anthony Constantinou) \hfill \href{https://github.com/TheDansmod/qmul-msc-ai-code-master-thesis/blob/main/dissertation_report.pdf}{dissertation \faExternalLink*} $\vert$ \href{https://github.com/TheDansmod/qmul-msc-ai-code-master-thesis}{code \faExternalLink*}
+    \begin{itemize}[leftmargin=*]
+        \item Recast score-based causal structure learning with latent confounders (bow-free and ancestral ADMGs, linear Gaussian models) as unconstrained continuous optimisation, with proven surjective maps from Euclidean space onto each graph class; minimised the BIC with PPO and CMA-ES.
+        \item On the Sachs protein-signalling network, the CMA-ES variant achieved the lowest SHD (22 vs. 53), the highest PAG-skeleton \(F_{1}\) (0.58 vs. 0.47) and the shortest runtime (106 s vs. 250 s) against \href{https://arxiv.org/abs/2010.06978}{DCD} and \href{https://proceedings.mlr.press/v52/ogarrio16.html}{GFCI}; matched or exceeded DCD on synthetic benchmarks.
+        \item Accelerated the RICF estimator 2.7--54\(\times\) over the \href{https://ananke.readthedocs.io/en/latest/}{ananke-causal} reference implementation through Numba JIT compilation and precomputed covariance.
+    \end{itemize}
 
     \vspace{5pt}
     \noindent {\normalsize \textbf{Birla Institute of Technology and Science}}, Pilani, India \hfill Aug 2018 -- Aug 2022 \\
     {\normalsize Bachelor of Engineering in Computer Science $\vert$ First Division} \\
-    \textbf{Thesis}: Actor-critic reinforcement learning for adaptive-bitrate video streaming (Advisor: Dr. Paresh Saxena). A multi-seed ablation of five PPO optimisations isolated two (advantage normalisation, gradient clipping) that together raised average peak Quality of Experience from 17.37 to 47.48. \href{https://github.com/TheDansmod/improving-video-quality-experience-using-actor-critic/releases/download/docs/presentation_condensed.pdf}{report \faExternalLink*}
+    \textbf{Thesis}: \textit{Actor-Critic Methods for Video Streaming Quality of Experience} (Advisor: Dr. Paresh Saxena) \hfill \href{https://github.com/TheDansmod/improving-video-quality-experience-using-actor-critic/releases/download/docs/presentation_condensed.pdf}{report \faExternalLink*} \\
+    Raised average peak QoE for adaptive-bitrate streaming from 17.37 to 47.48 (5 seeds) in the \href{https://dl.acm.org/doi/10.1145/3098822.3098843}{Pensieve} framework by combining advantage normalisation with gradient clipping in PPO, selected through a multi-seed ablation of five PPO optimisations.
 
     \pagestyle{fancy}
     \fancyhf{}
